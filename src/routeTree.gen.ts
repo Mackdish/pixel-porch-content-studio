@@ -109,8 +109,6 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
   '/solutions/$service': typeof SolutionsServiceRoute
-  '/solutions/$service': typeof SolutionsServiceRoute
-  '/solutions/$service': typeof SolutionsServiceRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
@@ -126,6 +124,7 @@ export interface FileRoutesByTo {
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
@@ -142,6 +141,7 @@ export interface FileRoutesById {
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
@@ -175,6 +175,7 @@ export interface FileRouteTypes {
     | '/process'
     | '/projects'
     | '/solutions'
+    | '/solutions/$service'
     | '/terms'
   id:
     | '__root__'
