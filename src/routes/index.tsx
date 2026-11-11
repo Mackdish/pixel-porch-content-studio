@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, HardDrive, Server, Wifi, Wrench, Quote } from "lucide-react";
+import { ArrowRight, Cable, HardDrive, Server, Wifi, Wrench, Quote, GraduationCap, Code2, ShieldCheck, Cloud, Camera, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Section, SectionHeading } from "@/components/site/Section";
@@ -18,16 +18,17 @@ import wifiImg from "@/assets/wifi-office.jpg";
 
 export const Route = createFileRoute("/")({
   loader: () => getPublishedProjects(),
-  head: () => pageHead("IT Solutions for the Future | Clisanco Technologies", "Clisanco Technologies delivers ICT consultancy, custom software and website development, network infrastructure installation, hardware supply, cloud solutions, cybersecurity, managed IT support and CCTV systems across Kenya."),
+  head: () => pageHead("IT Solutions for the Future | Clisanco Technologies", "Clisanco Technologies provides ICT consultancy, custom software and website development, network infrastructure installation, ICT hardware supply, cloud solutions, cybersecurity, managed IT support, CCTV installation and practical digital skills training across Kenya."),
   component: Home,
 });
 
 const TILES = [
-  { icon: Cable, title: "LAN & Structured Cabling", text: "Cat6/Cat6A runs and fibre backbones, tested and certified." },
-  { icon: Wifi, title: "Wi-Fi & Wireless Design", text: "Site surveys, heatmaps and high-density coverage." },
-  { icon: HardDrive, title: "Network Hardware Supply", text: "Switches, routers, firewalls, racks and UPS." },
-  { icon: Server, title: "Server Room & Rack Setup", text: "Clean racks, cooling-aware layouts and power." },
-  { icon: Wrench, title: "Managed IT Support", text: "SLA-backed maintenance that keeps you online." },
+  { icon: Cable, title: "Network Infrastructure", text: "Structured cabling, fibre, LAN/WAN, Wi-Fi, switching and server-room installations." },
+  { icon: Code2, title: "Software & Websites", text: "Custom business systems, portals, e-commerce platforms and responsive websites." },
+  { icon: Lightbulb, title: "ICT Consultancy & Supply", text: "Technology assessments, digital transformation advice and reliable ICT hardware." },
+  { icon: Cloud, title: "Cloud & Cybersecurity", text: "Cloud deployment, backups, security assessments, firewalls and access control." },
+  { icon: Camera, title: "IT Support & CCTV", text: "Ongoing technical support, maintenance, surveillance installation and remote monitoring." },
+  { icon: GraduationCap, title: "Digital Skills Training", text: "Practical training in digital tools, computer skills, productivity and workplace technology." },
 ];
 
 const SEGMENTS = [
@@ -56,7 +57,7 @@ function Home() {
           <div>
             <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "IT Solutions for the Future"}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-              {copy?.intro || "Clisanco Technologies provides end-to-end technology services for businesses, institutions and organisations across Kenya — from ICT consultancy, custom software and website development to network infrastructure, hardware supply, cloud solutions, cybersecurity, managed IT support and CCTV installation. We help you choose, build and maintain reliable technology that moves your organisation forward."}
+              {copy?.intro || "Clisanco Technologies helps businesses, schools, institutions and organisations across Kenya make technology work for them. Our services span ICT consultancy, custom software and website development, network infrastructure installation, ICT hardware supply, cloud solutions, cybersecurity, managed IT support, CCTV systems and digital skills training. Whether you need dependable infrastructure, a system built around your operations, stronger digital security or practical skills for your team, we help you plan, implement and use technology with confidence."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild size="lg"><Link to="/contact">Get a Free Site Survey</Link></Button>
@@ -88,7 +89,7 @@ function Home() {
 
       {/* Everything your network needs */}
       <Section>
-        <SectionHeading eyebrow="What we do" title="Everything your network needs." intro="One accountable partner from the first cable to the last access point." />
+        <SectionHeading eyebrow="What we do" title="Complete technology services under one roof." intro="From infrastructure and software to security, support and digital skills training, we help your organisation get more from technology." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {TILES.map((t, i) => (
             <Reveal key={t.title} delay={i * 60}>
