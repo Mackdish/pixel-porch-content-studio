@@ -38,7 +38,8 @@ function AuthPage() {
               <h1 className="text-3xl font-bold">You're signed in</h1>
               <p className="mt-3 text-muted-foreground">Signed in as {user.email}.</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild><Link to="/">Go to website</Link></Button>
+                <Button asChild variant="accent"><Link to="/admin">Open dashboard</Link></Button>
+                <Button asChild variant="outline"><Link to="/">Go to website</Link></Button>
                 <Button variant="outline" onClick={() => void signOut()}>Sign out</Button>
               </div>
             </div>
