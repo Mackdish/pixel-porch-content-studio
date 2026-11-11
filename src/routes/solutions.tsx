@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Camera, Cloud, Code2, HardDrive, Lightbulb, ShieldCheck, Wrench, Globe, GraduationCap } from "lucide-react";
+import { ArrowRight, Camera, Cloud, Code2, HardDrive, Lightbulb, Network, ShieldCheck, Wrench, Globe, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/Blocks";
