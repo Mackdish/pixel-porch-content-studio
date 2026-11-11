@@ -8,9 +8,12 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import type { User } from "@supabase/supabase-js";
 
 import appCss from "../styles.css?url";
+import { AuthContext, type AuthContextValue } from "@/lib/auth-context";
+import { supabase } from "@/integrations/supabase/client";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { SITE } from "@/lib/site";
@@ -140,16 +143,58 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const [user, setUser] = useState<User | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event !== "INITIAL_SESSION" && event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      setUser(session?.user ?? null);
+      setAuthReady(true);
+
+      if (event === "SIGNED_IN" || event === "SIGNED_OUT" || event === "USER_UPDATED") {
+        void router.invalidate();
+        if (event !== "SIGNED_OUT") void queryClient.invalidateQueries();
+      }
+    });
+
+    void supabase.auth.getUser().then(({ data, error }) => {
+      if (!active) return;
+      setUser(error ? null : data.user);
+      setAuthReady(true);
+    }).catch(() => {
+      if (active) setAuthReady(true);
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
+  }, [queryClient, router]);
+
+  const signOut = useCallback(async () => {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+    await router.navigate({ to: "/auth", replace: true });
+  }, [queryClient, router]);
+
+  const authValue = useMemo<AuthContextValue>(() => ({ user, ready: authReady, signOut }), [user, authReady, signOut]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
-      <Header />
-      <main id="main">
-        <Outlet />
-      </main>
-      <Footer />
+      <AuthContext.Provider value={authValue}>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
+        <Header />
+        <main id="main">
+          <Outlet />
+        </main>
+        <Footer />
+      </AuthContext.Provider>
     </QueryClientProvider>
   );
 }
