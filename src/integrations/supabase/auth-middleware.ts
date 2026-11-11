@@ -54,17 +54,18 @@ export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server
     }
 
 
+    // Some hosting/proxy configurations normalize or omit Authorization on
+    // server-function requests. The client middleware sends the same session
+    // token in this dedicated header as a fallback.
     const authHeader = request.headers.get('authorization');
+    const fallbackToken = request.headers.get('x-supabase-access-token');
+    const token = authHeader?.startsWith('Bearer ')
+      ? authHeader.slice('Bearer '.length).trim()
+      : fallbackToken?.trim();
 
-    if (!authHeader) {
-      throw new Error('Unauthorized: No authorization header provided');
+    if (!token) {
+      throw new Error('Unauthorized: No session token provided');
     }
-
-    if (!authHeader.startsWith('Bearer ')) {
-      throw new Error('Unauthorized: Only Bearer tokens are supported');
-    }
-
-    const token = authHeader.replace('Bearer ', '');
     if (!token) {
       throw new Error('Unauthorized: No token provided');
     }
