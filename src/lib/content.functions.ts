@@ -57,6 +57,20 @@ export const getPublishedProjects = createServerFn({ method: "GET" }).handler(as
   return (data ?? []) as ContentRow[];
 });
 
+/** Public page copy selected by its stable page key (for example: about, solutions). */
+export const getPublishedPage = createServerFn({ method: "GET" })
+  .validator(z.object({ slug: z.string().min(1).max(120) }))
+  .handler(async ({ data }): Promise<ContentRow | null> => {
+    const url = import.meta.env["VITE_SUPABASE_URL"] || process.env["SUPABASE_URL"];
+    const key = import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] || process.env["SUPABASE_PUBLISHABLE_KEY"];
+    if (!url || !key) return null;
+    const supabase = createClient<Database>(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+    const { data: row, error } = await supabase.from("site_content").select("*")
+      .eq("kind", "page").eq("slug", data.slug).eq("published", true).maybeSingle();
+    if (error) throw friendlyDbError(error);
+    return row as ContentRow | null;
+  });
+
 export const getAdminAccess = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {

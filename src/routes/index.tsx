@@ -7,7 +7,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/Blocks";
 import { ProjectCard, PostCard } from "@/components/site/Cards";
 import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
-import { getPublishedProjects } from "@/lib/content.functions";
+import { getPublishedProjects, getPublishedPage } from "@/lib/content.functions";
+import { parseContent } from "@/lib/content-types";
+import { useQuery } from "@tanstack/react-query";
 import { pageHead } from "@/lib/seo";
 import heroImg from "@/assets/hero-rack.jpg";
 import designImg from "@/assets/network-design.jpg";
@@ -43,6 +45,8 @@ const FEATURES = [
 
 function Home() {
   const managedProjects = Route.useLoaderData();
+  const homeCopy = useQuery({ queryKey: ["public-page-copy", "home"], queryFn: () => getPublishedPage({ data: { slug: "home" } }), staleTime: 60_000 });
+  const copy = homeCopy.data ? parseContent("page", homeCopy.data.content) : null;
   const projects = managedProjects.length > 0 ? managedProjects : PROJECTS;
   return (
     <>
@@ -50,9 +54,9 @@ function Home() {
       <section className="pb-16 pt-28 md:pb-24 md:pt-36">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
           <div>
-            <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">Network infrastructure, built to last.</h1>
+            <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "Network infrastructure, built to last."}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-              Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals, and enterprises across Kenya, designed and installed by certified engineers.
+              {copy?.intro || "Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals, and enterprises across Kenya, designed and installed by certified engineers."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild size="lg"><Link to="/contact">Get a Free Site Survey</Link></Button>
