@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Clisanco Technologies Limited",
   short: "Clisanco",
-  tagline: "Africa's Digital Transformation Partner",
+  tagline: "IT Solutions for the Future",
   phone: "+254 791 491636",
   phoneHref: "tel:+254791491636",
   whatsapp: "https://wa.me/254791491636",
