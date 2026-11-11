@@ -30,7 +30,6 @@ export function SectionHeading({ eyebrow, title, intro, center }: { eyebrow?: st
 const PAGE_KEYS: Record<string, string> = {
   "/about": "about",
   "/solutions": "solutions",
-  "/network-installation": "network-installation",
   "/projects": "projects",
   "/process": "process",
   "/faq": "faq",
