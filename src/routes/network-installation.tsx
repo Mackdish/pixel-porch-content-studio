@@ -6,7 +6,7 @@ import { CheckList, CtaBand, FaqList, ProcessTimeline } from "@/components/site/
 import { Reveal } from "@/components/site/Reveal";
 import { FAQS } from "@/lib/site";
 import { pageHead } from "@/lib/seo";
-import img from "@/assets/cabling-engineer.jpg";
+import img from "@/assets/Cabling-engineer.jpeg";
 
 export const Route = createFileRoute("/network-installation")({
   head: () => pageHead("LAN Installation Kisumu & Kenya", "End-to-end LAN installation in Kisumu and across Kenya: structured cabling, fibre, switches, Wi-Fi, racks, firewalls, testing, certification and documentation."),

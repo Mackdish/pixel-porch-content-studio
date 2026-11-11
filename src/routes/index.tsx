@@ -11,9 +11,9 @@ import { getPublishedProjects, getPublishedPage } from "@/lib/content.functions"
 import { parseContent } from "@/lib/content-types";
 import { useQuery } from "@tanstack/react-query";
 import { pageHead } from "@/lib/seo";
-import heroImg from "@/assets/hero-rack.jpg";
+import heroImg from "@/assets/hero-rack.jpeg";
 import designImg from "@/assets/network-design.jpg";
-import cablingImg from "@/assets/cabling-engineer.jpg";
+import cablingImg from "@/assets/Cabling-engineer.jpeg";
 import wifiImg from "@/assets/wifi-office.jpg";
 
 export const Route = createFileRoute("/")({

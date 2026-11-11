@@ -1,9 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import type { PROJECTS, POSTS } from "@/lib/site";
 import { parseContent, type ContentRow } from "@/lib/content-types";
-import rack from "@/assets/hero-rack.jpg";
+import rack from "@/assets/hero-rack.jpeg";
 import wifi from "@/assets/wifi-office.jpg";
-import engineer from "@/assets/cabling-engineer.jpg";
+import engineer from "@/assets/Cabling-engineer.jpeg";
 import design from "@/assets/network-design.jpg";
 
 const IMGS = { rack, wifi, engineer, design };
