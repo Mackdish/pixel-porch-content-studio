@@ -22,11 +22,11 @@ export const STATS = [
 
 export const PROCESS = [
   { title: "Discovery", text: "A free 30-minute call to understand your goals, users and site." },
-  { title: "Assessment", text: "An on-site walk-through to map rooms, routes and existing equipment." },
-  { title: "Proposal", text: "A written proposal and bill of quantities within 3 working days." },
-  { title: "Delivery", text: "Installation by certified engineers, with weekly progress notes." },
-  { title: "Handover", text: "Full documentation and a sign-off checklist you walk through with us." },
-  { title: "Support", text: "An optional SLA plan to keep your network healthy long-term." },
+  { title: "Assessment", text: "We review your current setup, users, requirements and any technical or operational constraints." },
+  { title: "Proposal", text: "You receive a clear scope, recommended approach, timelines and an itemised quotation where applicable." },
+  { title: "Implementation", text: "We build, configure, supply or deploy the agreed solution, keeping you informed as work progresses." },
+  { title: "Handover", text: "We walk you through the completed work, share relevant documentation and help your team get started." },
+  { title: "Ongoing Support", text: "Where required, we provide maintenance, troubleshooting and continued technical assistance." },
 ];
 
 export const TESTIMONIALS = [
