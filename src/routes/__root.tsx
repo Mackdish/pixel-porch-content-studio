@@ -12,6 +12,7 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react
 import type { User } from "@supabase/supabase-js";
 
 import appCss from "../styles.css?url";
+import siteLogo from "../assets/logo.webp";
 import { AuthContext, type AuthContextValue } from "@/lib/auth-context";
 import { supabase } from "@/integrations/supabase/client";
 import { Header } from "@/components/site/Header";
@@ -99,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: siteLogo, type: "image/webp" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" },
