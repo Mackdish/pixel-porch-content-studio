@@ -5,7 +5,7 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/Blocks";
 import { ProjectCard, PostCard } from "@/components/site/Cards";
-import { PROJECTS, POSTS, STATS } from "@/lib/site";
+import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
 import { getPublishedProjects, getPublishedPage } from "@/lib/content.functions";
 import { parseContent } from "@/lib/content-types";
 import { useQuery } from "@tanstack/react-query";
@@ -154,8 +154,26 @@ function Home() {
         </div>
       </Section>
 
-      {/* Trusted partners */}
+      {/* Testimonials */}
       <Section>
+        <SectionHeading eyebrow="Testimonials" title="What our clients say." intro="Feedback from organisations and people who have worked with our team." />
+        <div className="grid gap-5 md:grid-cols-3">
+          {TESTIMONIALS.map((testimonial) => (
+            <Reveal key={testimonial.name}>
+              <figure className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-soft">
+                <blockquote className="flex-1 text-base leading-relaxed text-muted-foreground">“{testimonial.quote}”</blockquote>
+                <figcaption className="mt-7 border-t border-border pt-5">
+                  <p className="font-bold">{testimonial.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{testimonial.role}</p>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* Trusted partners */}
+      <Section tone="surface">
         <SectionHeading eyebrow="Trusted partners" title="Organisations we are proud to work alongside." intro="We value the relationships we build with organisations making a difference in their communities and industries." />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {["Rongo NGCDF", "Nyando NGCDF", "Arianda Farms", "Youth Rise Initiative"].map((partner) => (
