@@ -15,6 +15,12 @@ export const Route = createFileRoute("/contact")({
 });
 
 const SERVICES = ["LAN installation", "Wi-Fi", "Hardware supply", "CCTV", "Other"];
+const CONTACT_FIELDS = [
+  ["name", "Full name"],
+  ["organisation", "Organisation"],
+  ["email", "Email"],
+  ["phone", "Phone"],
+] as const;
 
 function Page() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -23,11 +29,11 @@ function Page() {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
     const err: Record<string, string> = {};
-    if (!d.name?.trim()) err.name = "Please enter your name.";
-    if (!/^\S+@\S+\.\S+$/.test(d.email ?? "")) err.email = "Please enter a valid email.";
-    if (!/^[+\d\s()-]{9,}$/.test(d.phone ?? "")) err.phone = "Please enter a valid phone number.";
-    if (!d.service) err.service = "Please choose a service.";
-    if (!d.message?.trim()) err.message = "Please tell us a little about the project.";
+    if (!d["name"]?.trim()) err["name"] = "Please enter your name.";
+    if (!/^\S+@\S+\.\S+$/.test(d["email"] ?? "")) err["email"] = "Please enter a valid email.";
+    if (!/^[+\d\s()-]{9,}$/.test(d["phone"] ?? "")) err["phone"] = "Please enter a valid phone number.";
+    if (!d["service"]) err["service"] = "Please choose a service.";
+    if (!d["message"]?.trim()) err["message"] = "Please tell us a little about the project.";
     setErrors(err);
     if (!Object.keys(err).length) setSent(true);
   }
