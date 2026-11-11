@@ -35,7 +35,7 @@ function ServiceDetail() {
   return (
     <>
       <PageHero eyebrow="Our services" title={service.title} intro={service.summary}>
-        <Button asChild size="lg"><Link to="/contact" search={{ service: service.title }}>Request this service</Link></Button>
+        <Button asChild size="lg"><Link to="/contact">Request this service</Link></Button>
         <Button asChild size="lg" variant="outline"><Link to="/solutions">All services</Link></Button>
       </PageHero>
 
