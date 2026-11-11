@@ -54,7 +54,7 @@ const HOME_FAQS = [
   { q: "Can you combine several services into one project?", a: "Yes. A project may combine consultancy, hardware supply, network infrastructure, cloud services, cybersecurity and staff training. We can help coordinate the services required for your objectives." },
   { q: "Do you provide support after a project is completed?", a: "Yes. Depending on the service, we can provide maintenance, troubleshooting, system updates and ongoing technical support after implementation." },
   { q: "Where do you provide your services?", a: "We are based in Kisumu and take on projects across Kenya. Contact us with your location and requirements so we can discuss availability and delivery." },
-] as const;
+];
 
 function Home() {
   const managedProjects = Route.useLoaderData();
