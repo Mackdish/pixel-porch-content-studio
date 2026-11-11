@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as DataProtectionRouteImport } from './routes/data-protection'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as NetworkInstallationRouteImport } from './routes/network-installation'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProcessRouteImport } from './routes/process'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataProtectionRoute = DataProtectionRouteImport.update({
+  id: '/data-protection',
+  path: '/data-protection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkInstallationRoute = NetworkInstallationRouteImport.update({
+  id: '/network-installation',
+  path: '/network-installation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/data-protection': typeof DataProtectionRoute
+  '/faq': typeof FaqRoute
+  '/network-installation': typeof NetworkInstallationRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/data-protection': typeof DataProtectionRoute
+  '/faq': typeof FaqRoute
+  '/network-installation': typeof NetworkInstallationRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/data-protection': typeof DataProtectionRoute
+  '/faq': typeof FaqRoute
+  '/network-installation': typeof NetworkInstallationRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/data-protection'
+    | '/faq'
+    | '/network-installation'
+    | '/privacy'
+    | '/process'
+    | '/projects'
+    | '/solutions'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/data-protection'
+    | '/faq'
+    | '/network-installation'
+    | '/privacy'
+    | '/process'
+    | '/projects'
+    | '/solutions'
+    | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/data-protection'
+    | '/faq'
+    | '/network-installation'
+    | '/privacy'
+    | '/process'
+    | '/projects'
+    | '/solutions'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  DataProtectionRoute: typeof DataProtectionRoute
+  FaqRoute: typeof FaqRoute
+  NetworkInstallationRoute: typeof NetworkInstallationRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProcessRoute: typeof ProcessRoute
+  ProjectsRoute: typeof ProjectsRoute
+  SolutionsRoute: typeof SolutionsRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-protection': {
+      id: '/data-protection'
+      path: '/data-protection'
+      fullPath: '/data-protection'
+      preLoaderRoute: typeof DataProtectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network-installation': {
+      id: '/network-installation'
+      path: '/network-installation'
+      fullPath: '/network-installation'
+      preLoaderRoute: typeof NetworkInstallationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  DataProtectionRoute: DataProtectionRoute,
+  FaqRoute: FaqRoute,
+  NetworkInstallationRoute: NetworkInstallationRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProcessRoute: ProcessRoute,
+  ProjectsRoute: ProjectsRoute,
+  SolutionsRoute: SolutionsRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
