@@ -4,3 +4,4 @@
 - [ ] Build a dashboard to manage projects and images, services/page text, FAQs, and blog posts.
 - [ ] Connect public website sections to saved content and image uploads.
 - [ ] Verify admin access rules, content editing flow, and the current build.
+- [x] Confirm the remix database migration history is clean for the new project.

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
+import { useAuth } from "@/lib/auth-context";
 
 const NAV = [
   { to: "/network-installation", label: "Network Installation" },
@@ -16,6 +17,7 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8);
     on();
@@ -34,6 +36,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <Link to="/auth" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">{user ? "Account" : "Sign in"}</Link>
           <Button asChild className="hidden sm:inline-flex">
             <Link to="/contact">Request a Quote</Link>
           </Button>
@@ -49,6 +52,7 @@ export function Header() {
               {n.label}
             </Link>
           ))}
+          <Link to="/auth" onClick={() => setOpen(false)} className="block border-b border-border py-4 text-base font-medium">{user ? "Account" : "Sign in"}</Link>
           <Button asChild className="mt-5 w-full" size="lg">
             <Link to="/contact" onClick={() => setOpen(false)}>Request a Quote</Link>
           </Button>
