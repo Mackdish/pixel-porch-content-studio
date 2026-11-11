@@ -54,7 +54,7 @@ function Page() {
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate className="grid gap-6 md:grid-cols-2">
-              {[["name", "Full name"], ["organisation", "Organisation"], ["email", "Email"], ["phone", "Phone"]].map(([n, l]) => (
+              {CONTACT_FIELDS.map(([n, l]) => (
                 <div key={n}>
                   <Label htmlFor={n}>{l}</Label>
                   <Input id={n} name={n} type={n === "email" ? "email" : n === "phone" ? "tel" : "text"} className={field} aria-invalid={!!errors[n]} />
@@ -63,11 +63,11 @@ function Page() {
               ))}
               <div>
                 <Label htmlFor="service">Service needed</Label>
-                <select id="service" name="service" defaultValue="" className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3 text-sm" aria-invalid={!!errors.service}>
+                <select id="service" name="service" defaultValue="" className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3 text-sm" aria-invalid={!!errors["service"]}>
                   <option value="" disabled>Choose a service</option>
                   {SERVICES.map((s) => <option key={s}>{s}</option>)}
                 </select>
-                {errors.service && <p className="mt-1 text-sm text-destructive">{errors.service}</p>}
+                {errors["service"] && <p className="mt-1 text-sm text-destructive">{errors["service"]}</p>}
               </div>
               <div>
                 <Label htmlFor="size">Number of users / floors</Label>
@@ -75,8 +75,8 @@ function Page() {
               </div>
               <div className="md:col-span-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" rows={5} className="mt-2 rounded-xl" aria-invalid={!!errors.message} />
-                {errors.message && <p className="mt-1 text-sm text-destructive">{errors.message}</p>}
+                <Textarea id="message" name="message" rows={5} className="mt-2 rounded-xl" aria-invalid={!!errors["message"]} />
+                {errors["message"] && <p className="mt-1 text-sm text-destructive">{errors["message"]}</p>}
               </div>
               <Button type="submit" size="lg" className="md:col-span-2">Send request</Button>
             </form>
