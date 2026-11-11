@@ -34,8 +34,14 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
 export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server(
   async ({ next }) => {
     
-    const SUPABASE_URL = process.env['SUPABASE_URL'];
-    const SUPABASE_PUBLISHABLE_KEY = process.env['SUPABASE_PUBLISHABLE_KEY'];
+    // VITE_* values are embedded into the deployed bundle at build time.
+    // Cloudflare Workers may not expose Node's process.env unless nodejs_compat
+    // and matching runtime bindings are configured, while the browser client
+    // already uses these same public build-time values.
+    const runtimeEnv = typeof process !== 'undefined' ? process.env : undefined;
+    const SUPABASE_URL = import.meta.env['VITE_SUPABASE_URL'] || runtimeEnv?.['SUPABASE_URL'];
+    const SUPABASE_PUBLISHABLE_KEY =
+      import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] || runtimeEnv?.['SUPABASE_PUBLISHABLE_KEY'];
 
     if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
       const missing = [
