@@ -21,6 +21,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as SolutionsServiceRouteImport } from './routes/solutions.$service'
 import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
@@ -83,6 +84,11 @@ const SolutionsRoute = SolutionsRouteImport.update({
   path: '/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsServiceRoute = SolutionsServiceRouteImport.update({
+  id: '/solutions/$service',
+  path: '/solutions/$service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -102,6 +108,9 @@ export interface FileRoutesByFullPath {
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/process'
     | '/projects'
     | '/solutions'
+    | '/solutions/$service'
     | '/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -196,6 +206,7 @@ export interface RootRouteChildren {
   ProcessRoute: typeof ProcessRoute
   ProjectsRoute: typeof ProjectsRoute
   SolutionsRoute: typeof SolutionsRoute
+  SolutionsServiceRoute: typeof SolutionsServiceRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -285,6 +296,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/$service': {
+      id: '/solutions/$service'
+      path: '/solutions/$service'
+      fullPath: '/solutions/$service'
+      preLoaderRoute: typeof SolutionsServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -308,6 +326,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProcessRoute: ProcessRoute,
   ProjectsRoute: ProjectsRoute,
   SolutionsRoute: SolutionsRoute,
+  SolutionsServiceRoute: SolutionsServiceRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
