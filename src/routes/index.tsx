@@ -46,9 +46,6 @@ function Home() {
       <section className="pb-16 pt-28 md:pb-24 md:pt-36">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
           <div>
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-soft px-4 py-1.5 text-sm font-semibold text-primary">
-              <span className="size-2 rounded-full bg-brand" /> Africa's Digital Transformation Partner
-            </p>
             <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">Network infrastructure, built to last.</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
               Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals, and enterprises across Kenya, designed and installed by certified engineers.
