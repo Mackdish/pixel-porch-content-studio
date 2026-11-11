@@ -79,12 +79,11 @@ export const FAQS = [
   },
 ];
 
-// [Placeholder] Replace titles, descriptions and images with real projects.
 export const PROJECTS = [
-  { title: "Networking Installations", tag: "Lead project", text: "[Placeholder] Structured cabling, switching and Wi-Fi rollout for a multi-floor client site.", img: "rack" },
-  { title: "[Placeholder] School campus Wi-Fi", tag: "Education", text: "[Placeholder] High-density wireless coverage across classrooms and halls.", img: "wifi" },
-  { title: "[Placeholder] Office server room", tag: "Business", text: "[Placeholder] Rack build, cable management and UPS for a growing office.", img: "engineer" },
-  { title: "[Placeholder] Clinic network upgrade", tag: "Healthcare", text: "[Placeholder] Secure, segmented network for a healthcare facility.", img: "design" },
+  { title: "Networking Installations", tag: "Lead project", text: "Structured cabling, switching and Wi-Fi rollout for a multi-floor client site.", img: "rack" },
+  { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls.", img: "wifi" },
+  { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office.", img: "engineer" },
+  { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility.", img: "design" },
 ] as const;
 
 // [Placeholder] Blog posts — replace with real articles.

@@ -1,20 +1,19 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/logo.webp";
+import logoInverse from "@/assets/logo-inverse.webp";
 import { cn } from "@/lib/utils";
 
-// [Placeholder] Swap this mark for the official Clisanco logo file when available.
+// `inverse` is for dark backgrounds (the footer): same logo with the black text in white.
 export function Logo({ inverse }: { inverse?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-2.5" aria-label="Clisanco Technologies, home">
-      <svg viewBox="0 0 32 32" className="size-8" aria-hidden="true">
-        <rect width="32" height="32" rx="8" className={inverse ? "fill-brand" : "fill-primary"} />
-        <circle cx="10" cy="16" r="3" className="fill-brand-foreground" />
-        <circle cx="22" cy="9" r="2.5" className="fill-brand-foreground" />
-        <circle cx="22" cy="23" r="2.5" className="fill-brand-foreground" />
-        <path d="M12.5 14.5 20 10M12.5 17.5 20 22" strokeWidth="1.8" className="stroke-brand-foreground" />
-      </svg>
-      <span className={cn("text-lg font-extrabold tracking-tight", inverse ? "text-ink-foreground" : "text-foreground")}>
-        Clisanco<span className="font-medium text-brand"> Technologies</span>
-      </span>
+    <Link to="/" className="inline-flex items-center" aria-label="Clisanco Technologies Limited, home">
+      <img
+        src={inverse ? logoInverse : logo}
+        alt="Clisanco Technologies Limited"
+        width={709}
+        height={539}
+        className={cn("w-auto", inverse ? "h-28" : "h-14 md:h-16")}
+      />
     </Link>
   );
 }
