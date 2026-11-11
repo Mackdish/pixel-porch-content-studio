@@ -7,6 +7,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/Blocks";
 import { ProjectCard, PostCard } from "@/components/site/Cards";
 import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
+import { getPublishedProjects } from "@/lib/content.functions";
 import { pageHead } from "@/lib/seo";
 import heroImg from "@/assets/hero-rack.jpg";
 import designImg from "@/assets/network-design.jpg";
@@ -14,6 +15,7 @@ import cablingImg from "@/assets/cabling-engineer.jpg";
 import wifiImg from "@/assets/wifi-office.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: () => getPublishedProjects(),
   head: () => pageHead("LAN & Network Installation in Kisumu, Kenya", "Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals and enterprises across Kenya, by certified engineers in Kisumu."),
   component: Home,
 });
@@ -40,6 +42,8 @@ const FEATURES = [
 ];
 
 function Home() {
+  const managedProjects = Route.useLoaderData();
+  const projects = managedProjects.length > 0 ? managedProjects : PROJECTS;
   return (
     <>
       {/* Hero */}
@@ -152,7 +156,7 @@ function Home() {
           <div className="mb-12 md:mb-16"><TextLink to="/projects">All projects</TextLink></div>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          {PROJECTS.map((p, i) => <Reveal key={p.title} delay={i * 60}><ProjectCard project={p} /></Reveal>)}
+          {projects.map((p, i) => <Reveal key={"id" in p ? p.id : p.title} delay={i * 60}><ProjectCard project={p} /></Reveal>)}
         </div>
       </Section>
 
