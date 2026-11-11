@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
@@ -16,6 +16,12 @@ export const Route = createFileRoute("/solutions")({
 });
 
 function Page() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  // TanStack file-based routing nests /solutions/* routes beneath this route.
+  // Render the catalogue only at /solutions and let child service routes render on their own URLs.
+  if (pathname !== "/solutions") return <Outlet />;
+
   return (
     <>
       <PageHero
