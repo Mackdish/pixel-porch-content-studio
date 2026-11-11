@@ -113,7 +113,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/data-protection': typeof DataProtectionRoute
   '/faq': typeof FaqRoute
-  '/network-installation': typeof NetworkInstallationRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
@@ -130,7 +129,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/data-protection': typeof DataProtectionRoute
   '/faq': typeof FaqRoute
-  '/network-installation': typeof NetworkInstallationRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
@@ -163,7 +161,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/data-protection'
     | '/faq'
-    | '/network-installation'
     | '/privacy'
     | '/process'
     | '/projects'
@@ -179,7 +176,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/data-protection'
     | '/faq'
-    | '/network-installation'
     | '/privacy'
     | '/process'
     | '/projects'
