@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FAQS, PROCESS, SITE } from "@/lib/site";
 import { Reveal } from "./Reveal";
 
-export function CtaBand({ title = "Ready for a network that just works?", text = "Tell us about your site. We'll come back with a clear plan and a written proposal within 3 working days." }: { title?: string; text?: string }) {
+export function CtaBand({ title = "Ready to make technology work better for your organisation?", text = "Tell us what you want to achieve. We'll help you identify a practical solution and the right next step." }: { title?: string; text?: string }) {
   return (
     <section className="px-5 py-20 md:px-8">
       <Reveal className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-ink px-8 py-16 text-center text-ink-foreground md:px-16 md:py-24">
