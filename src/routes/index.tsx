@@ -22,16 +22,16 @@ export const Route = createFileRoute("/")({
 });
 
 const TILES = [
-  { icon: Lightbulb, title: "ICT Consultancy", text: "Technology assessments, practical IT advice and digital transformation roadmaps aligned with your goals and budget." },
-  { icon: Code2, title: "Software Development", text: "Custom business systems, management platforms, portals and workflow tools built around how your organisation works." },
-  { icon: Globe, title: "Website Development", text: "Professional, responsive business websites, e-commerce platforms and online experiences that turn visitors into enquiries." },
-  { icon: HardDrive, title: "ICT Hardware Supply", text: "Computers, servers, networking equipment and accessories selected for your operational and budget requirements." },
-  { icon: Cloud, title: "Cloud Solutions", text: "Cloud hosting, migration, storage, collaboration, backup and recovery solutions that support flexible working." },
-  { icon: ShieldCheck, title: "Cybersecurity Services", text: "Security reviews and practical safeguards for your networks, devices, user accounts and business information." },
-  { icon: Cable, title: "Network Infrastructure", text: "Structured cabling, fibre, LAN/WAN, Wi-Fi, switching and server-room infrastructure for dependable connectivity." },
-  { icon: Wrench, title: "Managed IT Support", text: "Ongoing technical assistance, troubleshooting, maintenance and support to keep your systems working." },
-  { icon: Camera, title: "CCTV Installation", text: "Video surveillance planning, camera installation, recording configuration and remote monitoring for your premises." },
-  { icon: GraduationCap, title: "Digital Skills Training", text: "Practical digital literacy, computer skills and productivity training for learners, employees and teams." },
+  { icon: Lightbulb, title: "ICT Consultancy", to: "/solutions/ict-consultancy" as const, text: "Technology assessments, practical IT advice and digital transformation roadmaps aligned with your goals and budget." },
+  { icon: Code2, title: "Software Development", to: "/solutions/software-development" as const, text: "Custom business systems, management platforms, portals and workflow tools built around how your organisation works." },
+  { icon: Globe, title: "Website Development", to: "/solutions/website-development" as const, text: "Professional, responsive business websites, e-commerce platforms and online experiences that turn visitors into enquiries." },
+  { icon: HardDrive, title: "ICT Hardware Supply", to: "/solutions/ict-hardware-supply" as const, text: "Computers, servers, networking equipment and accessories selected for your operational and budget requirements." },
+  { icon: Cloud, title: "Cloud Solutions", to: "/solutions/cloud-solutions" as const, text: "Cloud hosting, migration, storage, collaboration, backup and recovery solutions that support flexible working." },
+  { icon: ShieldCheck, title: "Cybersecurity Services", to: "/solutions/cybersecurity-services" as const, text: "Security reviews and practical safeguards for your networks, devices, user accounts and business information." },
+  { icon: Cable, title: "Network Infrastructure", to: "/solutions/network-infrastructure-installation" as const, text: "Structured cabling, fibre, LAN/WAN, Wi-Fi, switching and server-room infrastructure for dependable connectivity." },
+  { icon: Wrench, title: "Managed IT Support", to: "/solutions/managed-it-support" as const, text: "Ongoing technical assistance, troubleshooting, maintenance and support to keep your systems working." },
+  { icon: Camera, title: "CCTV Installation", to: "/solutions/cctv-system-installation" as const, text: "Video surveillance planning, camera installation, recording configuration and remote monitoring for your premises." },
+  { icon: GraduationCap, title: "Digital Skills Training", to: "/solutions/digital-skills-training" as const, text: "Practical digital literacy, computer skills and productivity training for learners, employees and teams." },
 ];
 
 const SEGMENTS = [
@@ -89,11 +89,12 @@ function Home() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TILES.map((t, i) => (
             <Reveal key={t.title} delay={i * 60}>
-              <div className="card-lift h-full rounded-3xl border border-border bg-card p-7">
+              <Link to={t.to} className="card-lift group block h-full rounded-3xl border border-border bg-card p-7 transition-colors hover:border-brand/50">
                 <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-brand-soft text-brand"><t.icon className="size-6" /></span>
-                <h3 className="mt-6 text-lg font-bold leading-snug">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.text}</p>
-              </div>
+                <h3 className="mt-6 text-lg font-bold leading-snug group-hover:text-brand">{t.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">Explore service <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
+              </Link>
             </Reveal>
           ))}
         </div>
