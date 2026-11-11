@@ -17,7 +17,6 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DataProtectionRouteImport } from './routes/data-protection'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as NetworkInstallationRouteImport } from './routes/network-installation'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ProjectsRouteImport } from './routes/projects'
@@ -64,11 +63,6 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NetworkInstallationRoute = NetworkInstallationRouteImport.update({
-  id: '/network-installation',
-  path: '/network-installation',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -104,7 +98,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/data-protection': typeof DataProtectionRoute
   '/faq': typeof FaqRoute
-  '/network-installation': typeof NetworkInstallationRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
@@ -155,7 +148,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/data-protection'
     | '/faq'
-    | '/network-installation'
     | '/privacy'
     | '/process'
     | '/projects'
@@ -204,7 +196,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DataProtectionRoute: typeof DataProtectionRoute
   FaqRoute: typeof FaqRoute
-  NetworkInstallationRoute: typeof NetworkInstallationRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -270,13 +261,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/network-installation': {
-      id: '/network-installation'
-      path: '/network-installation'
-      fullPath: '/network-installation'
-      preLoaderRoute: typeof NetworkInstallationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -324,7 +308,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DataProtectionRoute: DataProtectionRoute,
   FaqRoute: FaqRoute,
-  NetworkInstallationRoute: NetworkInstallationRoute,
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
   ProjectsRoute: ProjectsRoute,
