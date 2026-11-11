@@ -82,7 +82,7 @@ function ServiceDetail() {
             <p className="mt-4 text-ink-foreground/75">Tell us about your requirements. Our team will help you identify the right approach and prepare a clear proposal.</p>
           </div>
           <Button asChild size="lg" variant="secondary">
-            <Link to="/contact" search={{ service: service.title }}>Talk to our team <ArrowRight className="ml-2 size-4" /></Link>
+            <Link to="/contact">Talk to our team <ArrowRight className="ml-2 size-4" /></Link>
           </Button>
         </div>
       </Section>
