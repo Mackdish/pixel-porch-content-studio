@@ -18,7 +18,7 @@ import wifiImg from "@/assets/wifi-office.jpg";
 
 export const Route = createFileRoute("/")({
   loader: () => getPublishedProjects(),
-  head: () => pageHead("LAN & Network Installation in Kisumu, Kenya", "Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals and enterprises across Kenya, by certified engineers in Kisumu."),
+  head: () => pageHead("IT Solutions for the Future | Clisanco Technologies", "Clisanco Technologies delivers ICT consultancy, custom software and website development, network infrastructure installation, hardware supply, cloud solutions, cybersecurity, managed IT support and CCTV systems across Kenya."),
   component: Home,
 });
 
@@ -54,9 +54,9 @@ function Home() {
       <section className="pb-16 pt-28 md:pb-24 md:pt-36">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
           <div>
-            <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "Network infrastructure, built to last."}</h1>
+            <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "IT Solutions for the Future"}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-              {copy?.intro || "Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals, and enterprises across Kenya, designed and installed by certified engineers."}
+              {copy?.intro || "Clisanco Technologies provides end-to-end technology services for businesses, institutions and organisations across Kenya — from ICT consultancy, custom software and website development to network infrastructure, hardware supply, cloud solutions, cybersecurity, managed IT support and CCTV installation. We help you choose, build and maintain reliable technology that moves your organisation forward."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild size="lg"><Link to="/contact">Get a Free Site Survey</Link></Button>
