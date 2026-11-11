@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Camera, Cloud, Code2, HardDrive, Lightbulb, Network, ShieldCheck, Wrench, Globe, GraduationCap } from "lucide-react";
+import { ArrowRight, Camera, Cloud, Code2, HardDrive, Lightbulb, ShieldCheck, Wrench, Globe, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/Blocks";
@@ -64,6 +64,12 @@ const SERVICES = [
     points: ["Computer and essential digital literacy", "Office productivity tools and online collaboration", "Digital marketing and content creation", "Practical technology training for teams and institutions"],
   },
   {
+    icon: Network,
+    title: "Network Infrastructure Installation",
+    text: "End-to-end network design and installation for offices, schools, institutions and multi-building sites, delivered with testing and documentation.",
+    points: ["Structured cabling and fibre backbones", "LAN/WAN, switching and Wi-Fi deployment", "Server racks, firewall setup and network security", "Testing, certification and handover documentation"],
+  },
+  {
     icon: Camera,
     title: "CCTV System Installation",
     text: "End-to-end video surveillance solutions for homes, offices, schools and commercial premises, with secure recording and remote monitoring.",
@@ -77,25 +83,13 @@ function Page() {
       <PageHero
         eyebrow="Our services"
         title="Technology solutions that move your organisation forward."
-        intro="From network infrastructure, custom software and websites to ICT consultancy, hardware supply, cloud, cybersecurity, CCTV, managed support and digital skills training, Clisanco helps you plan, adopt and get lasting value from technology."
+        intro="Explore our full range of technology services, including network infrastructure, custom software and websites, ICT consultancy, hardware supply, cloud, cybersecurity, CCTV, managed support and digital skills training."
       >
         <Button asChild size="lg"><Link to="/contact">Discuss Your Project</Link></Button>
         <Button asChild size="lg" variant="outline"><Link to="/projects">View Our Projects</Link></Button>
       </PageHero>
       <Section>
-        <Reveal>
-          <Link to="/network-installation" className="card-lift group grid gap-6 rounded-3xl bg-ink p-8 text-ink-foreground md:grid-cols-[1fr_auto] md:items-end md:p-12">
-            <div>
-              <Network className="size-10 text-brand" />
-              <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-brand">Core infrastructure service</p>
-              <h2 className="mt-2 text-3xl font-bold md:text-5xl">Network Infrastructure Installation</h2>
-              <p className="mt-4 max-w-2xl text-lg text-ink-foreground/70">Structured cabling, fibre, LAN/WAN, switching, Wi-Fi, racks and firewalls—designed, installed, tested and documented by our team.</p>
-            </div>
-            <span className="inline-flex items-center gap-2 font-semibold text-brand">Explore network installation <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
-          </Link>
-        </Reveal>
-
-        <div className="mt-16">
+        <div className="mt-4">
           <SectionHeading
             eyebrow="More ways we can help"
             title="One technology partner. Multiple capabilities."
