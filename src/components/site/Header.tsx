@@ -7,7 +7,6 @@ import { Logo } from "./Logo";
 import { useAuth } from "@/lib/auth-context";
 
 const NAV = [
-  { to: "/network-installation", label: "Network Installation" },
   { to: "/solutions", label: "Solutions" },
   { to: "/projects", label: "Projects" },
   { to: "/process", label: "Process" },
