@@ -39,7 +39,7 @@ const SEGMENTS = [
 
 const FEATURES = [
   { title: "Designed before it's installed", text: "Every project starts with a site survey and a network design. You get a clear bill of quantities so you know exactly what's going in and why.", img: designImg, cta: "See our process", to: "/process" as const },
-  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: cablingImg, cta: "Explore network installation", to: "/network-installation" as const },
+  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: cablingImg, cta: "Explore network solutions", to: "/solutions" as const },
   { title: "Fast, reliable Wi-Fi in every corner", text: "We plan coverage, place access points where they actually perform, and separate guest and staff networks for speed and safety.", img: wifiImg, cta: "Talk to an engineer", to: "/contact" as const },
   { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: heroImg, cta: "View all solutions", to: "/solutions" as const },
 ];
