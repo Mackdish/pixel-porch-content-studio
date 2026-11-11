@@ -39,7 +39,7 @@ function Page() {
                 <article className="card-lift flex h-full flex-col rounded-3xl border border-border bg-card p-7 md:p-8">
                   <service.icon className="size-8 text-brand" />
                   <h3 className="mt-5 text-xl font-bold">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.text}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.summary}</p>
                   <ul className="mt-5 space-y-2">
                     {service.points.slice(0, 4).map((point) => (
                       <li key={point} className="flex gap-2 text-sm text-foreground/80">
