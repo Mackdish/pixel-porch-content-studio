@@ -70,12 +70,18 @@ function Home() {
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="border-y border-border py-10">
+      {/* Trusted partners */}
+      <section className="border-y border-border bg-surface/60 py-14 md:py-16">
         <div className="mx-auto max-w-7xl px-5 text-center md:px-8">
-          <p className="text-sm text-muted-foreground">Trusted by schools, NGOs, healthcare and businesses across Kenya and beyond</p>
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-14 gap-y-4 text-2xl font-bold text-muted-foreground/60">
-            {["Cisco", "Microsoft", "Google", "AWS"].map((n) => <li key={n}>{n}</li>)}
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand">Trusted Partners</p>
+          <h2 className="mt-3 text-2xl font-bold md:text-3xl">Working together to make an impact</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Proud to work alongside organisations driving progress in our communities.</p>
+          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {["Rongo NGCDF", "Nyando NGCDF", "Arianda Farms", "Youth Rise Initiative"].map((partner) => (
+              <li key={partner} className="flex min-h-20 items-center justify-center rounded-2xl border border-border bg-card px-5 py-6 text-lg font-bold tracking-tight shadow-sm">
+                {partner}
+              </li>
+            ))}
           </ul>
         </div>
       </section>
