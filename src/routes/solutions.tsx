@@ -50,7 +50,7 @@ function Page() {
                   </ul>
                   <div className="mt-auto pt-7">
                     <Button asChild variant="outline" className="w-full">
-                      <Link to="/solutions/$service" params={{ service: service.slug }}>View service details<ArrowRight className="ml-2 size-4" /></Link>
+                      <Link to={service.to}>View service details<ArrowRight className="ml-2 size-4" /></Link>
                     </Button>
                   </div>
                 </article>
