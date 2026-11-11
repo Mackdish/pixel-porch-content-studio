@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794390330786,
+      "tag": "0000_create_site_content",
+      "breakpoints": true
+    }
+  ]
 }
