@@ -191,6 +191,7 @@ export interface FileRouteTypes {
     | '/process'
     | '/projects'
     | '/solutions'
+    | '/solutions/$service'
     | '/terms'
   fileRoutesById: FileRoutesById
 }
