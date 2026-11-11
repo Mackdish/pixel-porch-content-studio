@@ -15,6 +15,12 @@ export const Route = createFileRoute("/contact")({
 });
 
 const SERVICES = ["LAN installation", "Wi-Fi", "Hardware supply", "CCTV", "Other"];
+const CONTACT_FIELDS = [
+  ["name", "Full name"],
+  ["organisation", "Organisation"],
+  ["email", "Email"],
+  ["phone", "Phone"],
+] as const;
 
 function Page() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -23,11 +29,11 @@ function Page() {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
     const err: Record<string, string> = {};
-    if (!d.name?.trim()) err.name = "Please enter your name.";
-    if (!/^\S+@\S+\.\S+$/.test(d.email ?? "")) err.email = "Please enter a valid email.";
-    if (!/^[+\d\s()-]{9,}$/.test(d.phone ?? "")) err.phone = "Please enter a valid phone number.";
-    if (!d.service) err.service = "Please choose a service.";
-    if (!d.message?.trim()) err.message = "Please tell us a little about the project.";
+    if (!d["name"]?.trim()) err["name"] = "Please enter your name.";
+    if (!/^\S+@\S+\.\S+$/.test(d["email"] ?? "")) err["email"] = "Please enter a valid email.";
+    if (!/^[+\d\s()-]{9,}$/.test(d["phone"] ?? "")) err["phone"] = "Please enter a valid phone number.";
+    if (!d["service"]) err["service"] = "Please choose a service.";
+    if (!d["message"]?.trim()) err["message"] = "Please tell us a little about the project.";
     setErrors(err);
     if (!Object.keys(err).length) setSent(true);
   }
@@ -48,7 +54,7 @@ function Page() {
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate className="grid gap-6 md:grid-cols-2">
-              {[["name", "Full name"], ["organisation", "Organisation"], ["email", "Email"], ["phone", "Phone"]].map(([n, l]) => (
+              {CONTACT_FIELDS.map(([n, l]) => (
                 <div key={n}>
                   <Label htmlFor={n}>{l}</Label>
                   <Input id={n} name={n} type={n === "email" ? "email" : n === "phone" ? "tel" : "text"} className={field} aria-invalid={!!errors[n]} />
@@ -57,11 +63,11 @@ function Page() {
               ))}
               <div>
                 <Label htmlFor="service">Service needed</Label>
-                <select id="service" name="service" defaultValue="" className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3 text-sm" aria-invalid={!!errors.service}>
+                <select id="service" name="service" defaultValue="" className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3 text-sm" aria-invalid={!!errors["service"]}>
                   <option value="" disabled>Choose a service</option>
                   {SERVICES.map((s) => <option key={s}>{s}</option>)}
                 </select>
-                {errors.service && <p className="mt-1 text-sm text-destructive">{errors.service}</p>}
+                {errors["service"] && <p className="mt-1 text-sm text-destructive">{errors["service"]}</p>}
               </div>
               <div>
                 <Label htmlFor="size">Number of users / floors</Label>
@@ -69,8 +75,8 @@ function Page() {
               </div>
               <div className="md:col-span-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" rows={5} className="mt-2 rounded-xl" aria-invalid={!!errors.message} />
-                {errors.message && <p className="mt-1 text-sm text-destructive">{errors.message}</p>}
+                <Textarea id="message" name="message" rows={5} className="mt-2 rounded-xl" aria-invalid={!!errors["message"]} />
+                {errors["message"] && <p className="mt-1 text-sm text-destructive">{errors["message"]}</p>}
               </div>
               <Button type="submit" size="lg" className="md:col-span-2">Send request</Button>
             </form>
