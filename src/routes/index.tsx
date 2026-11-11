@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, Wrench, Quote, GraduationCap, Code2, Cloud, Camera, Lightbulb } from "lucide-react";
+import { ArrowRight, Cable, Wrench, GraduationCap, Code2, Cloud, Camera, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/Blocks";
 import { ProjectCard, PostCard } from "@/components/site/Cards";
-import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
+import { PROJECTS, POSTS, STATS } from "@/lib/site";
 import { getPublishedProjects, getPublishedPage } from "@/lib/content.functions";
 import { parseContent } from "@/lib/content-types";
 import { useQuery } from "@tanstack/react-query";
@@ -68,22 +67,6 @@ function Home() {
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-brand-soft" aria-hidden="true" />
             <img src={heroImg} alt="Network rack with neatly labelled blue Cat6 patch cables and switches" width={1280} height={1024} fetchPriority="high" className="aspect-[5/4] w-full rounded-3xl object-cover shadow-lift" />
           </div>
-        </div>
-      </section>
-
-      {/* Trusted partners */}
-      <section className="border-y border-border bg-surface/60 py-14 md:py-16">
-        <div className="mx-auto max-w-7xl px-5 text-center md:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand">Trusted Partners</p>
-          <h2 className="mt-3 text-2xl font-bold md:text-3xl">Working together to make an impact</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Proud to work alongside organisations driving progress in our communities.</p>
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {["Rongo NGCDF", "Nyando NGCDF", "Arianda Farms", "Youth Rise Initiative"].map((partner) => (
-              <li key={partner} className="flex min-h-20 items-center justify-center rounded-2xl border border-border bg-card px-5 py-6 text-lg font-bold tracking-tight shadow-sm">
-                {partner}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
@@ -171,28 +154,16 @@ function Home() {
         </div>
       </Section>
 
-      {/* Testimonials */}
+      {/* Trusted partners */}
       <Section>
-        <SectionHeading eyebrow="Testimonials" title="What our clients say." />
-        <Carousel opts={{ align: "start" }} className="mx-auto max-w-6xl">
-          <CarouselContent>
-            {TESTIMONIALS.map((t) => (
-              <CarouselItem key={t.quote} className="md:basis-1/2 lg:basis-1/3">
-                <figure className="flex h-full flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-soft">
-                  <div>
-                    <Quote className="size-8 text-brand" aria-hidden="true" />
-                    <blockquote className="mt-5 text-lg font-medium leading-relaxed">"{t.quote}"</blockquote>
-                  </div>
-                  <figcaption className="mt-8 text-sm"><span className="font-bold">{t.name}</span><br /><span className="text-muted-foreground">{t.role}</span></figcaption>
-                </figure>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="mt-8 flex justify-center gap-3 lg:hidden">
-            <CarouselPrevious className="static translate-y-0" />
-            <CarouselNext className="static translate-y-0" />
-          </div>
-        </Carousel>
+        <SectionHeading eyebrow="Trusted partners" title="Organisations we are proud to work alongside." intro="We value the relationships we build with organisations making a difference in their communities and industries." />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {["Rongo NGCDF", "Nyando NGCDF", "Arianda Farms", "Youth Rise Initiative"].map((partner) => (
+            <div key={partner} className="flex min-h-28 items-center justify-center rounded-3xl border border-border bg-card px-6 py-7 text-center text-lg font-bold tracking-tight shadow-soft">
+              {partner}
+            </div>
+          ))}
+        </div>
       </Section>
 
       {/* FAQ */}
