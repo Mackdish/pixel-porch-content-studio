@@ -65,7 +65,7 @@ export function CheckList({ items }: { items: string[] }) {
   );
 }
 
-export function TextLink({ to, children }: { to: "/contact" | "/network-installation" | "/solutions" | "/projects" | "/process"; children: string }) {
+export function TextLink({ to, children }: { to: "/contact" | "/solutions" | "/projects" | "/process"; children: string }) {
   return (
     <Link to={to} className="group inline-flex items-center gap-1.5 font-semibold text-brand">
       {children}
