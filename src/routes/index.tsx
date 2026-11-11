@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, Wrench, GraduationCap, Code2, Cloud, Camera, Lightbulb } from "lucide-react";
+import { ArrowRight, Cable, Wrench, GraduationCap, Code2, Cloud, Camera, Lightbulb, HardDrive, ShieldCheck, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
@@ -22,26 +22,39 @@ export const Route = createFileRoute("/")({
 });
 
 const TILES = [
-  { icon: Cable, title: "Network Infrastructure", text: "Structured cabling, fibre, LAN/WAN, Wi-Fi, switching and server-room installations." },
-  { icon: Code2, title: "Software & Websites", text: "Custom business systems, portals, e-commerce platforms and responsive websites." },
-  { icon: Lightbulb, title: "ICT Consultancy & Supply", text: "Technology assessments, digital transformation advice and reliable ICT hardware." },
-  { icon: Cloud, title: "Cloud & Cybersecurity", text: "Cloud deployment, backups, security assessments, firewalls and access control." },
-  { icon: Camera, title: "IT Support & CCTV", text: "Ongoing technical support, maintenance, surveillance installation and remote monitoring." },
-  { icon: GraduationCap, title: "Digital Skills Training", text: "Practical training in digital tools, computer skills, productivity and workplace technology." },
+  { icon: Lightbulb, title: "ICT Consultancy", text: "Technology assessments, practical IT advice and digital transformation roadmaps aligned with your goals and budget." },
+  { icon: Code2, title: "Software Development", text: "Custom business systems, management platforms, portals and workflow tools built around how your organisation works." },
+  { icon: Globe, title: "Website Development", text: "Professional, responsive business websites, e-commerce platforms and online experiences that turn visitors into enquiries." },
+  { icon: HardDrive, title: "ICT Hardware Supply", text: "Computers, servers, networking equipment and accessories selected for your operational and budget requirements." },
+  { icon: Cloud, title: "Cloud Solutions", text: "Cloud hosting, migration, storage, collaboration, backup and recovery solutions that support flexible working." },
+  { icon: ShieldCheck, title: "Cybersecurity Services", text: "Security reviews and practical safeguards for your networks, devices, user accounts and business information." },
+  { icon: Cable, title: "Network Infrastructure", text: "Structured cabling, fibre, LAN/WAN, Wi-Fi, switching and server-room infrastructure for dependable connectivity." },
+  { icon: Wrench, title: "Managed IT Support", text: "Ongoing technical assistance, troubleshooting, maintenance and support to keep your systems working." },
+  { icon: Camera, title: "CCTV Installation", text: "Video surveillance planning, camera installation, recording configuration and remote monitoring for your premises." },
+  { icon: GraduationCap, title: "Digital Skills Training", text: "Practical digital literacy, computer skills and productivity training for learners, employees and teams." },
 ];
 
 const SEGMENTS = [
-  { title: "Schools & Institutions", text: "Campus-wide cabling and Wi-Fi that handles hundreds of learners at once." },
-  { title: "Businesses & Offices", text: "Reliable, tidy networks that grow with your team, from 5 desks to 5 floors." },
-  { title: "Hospitals, NGOs & Government", text: "Secure, segmented and fully documented networks for critical work." },
+  { title: "Schools & Learning Institutions", text: "Equip educators, administrators and learners with dependable systems, connected campuses, digital platforms and practical technology skills." },
+  { title: "Businesses & Growing Teams", text: "Build a stronger digital foundation with business software, professional websites, secure cloud tools, reliable hardware and responsive IT support." },
+  { title: "NGOs, Public & Community Organisations", text: "Make technology easier to manage through fit-for-purpose ICT advice, connected infrastructure, secure information systems and staff training." },
 ];
 
 const FEATURES = [
-  { title: "Designed before it's installed", text: "Every project starts with a site survey and a network design. You get a clear bill of quantities so you know exactly what's going in and why.", img: designImg, cta: "See our process", to: "/process" as const },
-  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: cablingImg, cta: "Explore network solutions", to: "/solutions" as const },
-  { title: "Fast, reliable Wi-Fi in every corner", text: "We plan coverage, place access points where they actually perform, and separate guest and staff networks for speed and safety.", img: wifiImg, cta: "Talk to an engineer", to: "/contact" as const },
-  { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: heroImg, cta: "View all solutions", to: "/solutions" as const },
+  { title: "Technology planned around your goals", text: "The right solution starts with understanding your organisation. We assess your needs, existing systems, users and budget before recommending an approach, whether you need a new platform, upgraded infrastructure or ongoing support.", img: designImg, cta: "See how we work", to: "/process" as const },
+  { title: "Digital platforms that make work easier", text: "We develop custom software and responsive websites that help organisations serve customers, manage information and simplify everyday processes. From business websites to tailored management systems, we focus on usability and practical value.", img: heroImg, cta: "Explore software and web services", to: "/solutions" as const },
+  { title: "Infrastructure you can depend on", text: "From structured cabling and Wi-Fi to cloud environments and ICT hardware, we help create a reliable technology foundation. Our work is planned for the way your people communicate, collaborate and access information.", img: cablingImg, cta: "Explore infrastructure solutions", to: "/solutions" as const },
+  { title: "Protection, support and skills for the long term", text: "Technology needs attention after implementation. We help organisations strengthen security, maintain systems, monitor premises with CCTV and build staff confidence through practical digital skills training.", img: wifiImg, cta: "Talk to our team", to: "/contact" as const },
 ];
+
+const HOME_FAQS = [
+  { q: "What services does Clisanco Technologies provide?", a: "We provide ICT consultancy, custom software development, website development, ICT hardware supply, cloud solutions, cybersecurity, network infrastructure installation, managed IT support, CCTV system installation and digital skills training." },
+  { q: "Can you recommend a solution if we're not sure what we need?", a: "Yes. Start with a consultation and tell us about your organisation, the challenge you want to solve and your budget. We can assess your requirements and recommend a practical way forward." },
+  { q: "Do you work with schools, businesses and institutions?", a: "Yes. We support businesses, schools and learning institutions, NGOs, public organisations and other teams. We shape the scope of work around each organisation's needs." },
+  { q: "Can you combine several services into one project?", a: "Yes. A project may combine consultancy, hardware supply, network infrastructure, cloud services, cybersecurity and staff training. We can help coordinate the services required for your objectives." },
+  { q: "Do you provide support after a project is completed?", a: "Yes. Depending on the service, we can provide maintenance, troubleshooting, system updates and ongoing technical support after implementation." },
+  { q: "Where do you provide your services?", a: "We are based in Kisumu and take on projects across Kenya. Contact us with your location and requirements so we can discuss availability and delivery." },
+] as const;
 
 function Home() {
   const managedProjects = Route.useLoaderData();
@@ -56,10 +69,10 @@ function Home() {
           <div>
             <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "IT Solutions for the Future"}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-              {copy?.intro || "We deliver ICT consultancy, software and website development, network installation, hardware supply, cloud and cybersecurity solutions, managed IT support, CCTV systems and practical digital skills training."}
+              {copy?.intro || "Clisanco Technologies helps businesses and institutions put technology to work. We provide ICT consultancy, custom software, websites, hardware, cloud and cybersecurity solutions, network infrastructure, managed IT support, CCTV systems and practical digital skills training."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild size="lg"><Link to="/contact">Get a Free Site Survey</Link></Button>
+              <Button asChild size="lg"><Link to="/contact">Book a Free Consultation</Link></Button>
               <Button asChild size="lg" variant="outline"><Link to="/projects">See Our Work</Link></Button>
             </div>
           </div>
@@ -70,10 +83,10 @@ function Home() {
         </div>
       </section>
 
-      {/* Everything your network needs */}
+      {/* Full service portfolio */}
       <Section>
-        <SectionHeading eyebrow="What we do" title="Complete technology services under one roof." intro="From infrastructure and software to security, support and digital skills training, we help your organisation get more from technology." />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <SectionHeading eyebrow="What we do" title="Everything you need to make technology work better." intro="From the first technology assessment to software development, infrastructure, security and ongoing support, we bring essential ICT services together under one roof." />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TILES.map((t, i) => (
             <Reveal key={t.title} delay={i * 60}>
               <div className="card-lift h-full rounded-3xl border border-border bg-card p-7">
@@ -88,7 +101,7 @@ function Home() {
 
       {/* Segments */}
       <Section tone="surface">
-        <SectionHeading eyebrow="Who we serve" title="Solutions for every kind of organisation." />
+        <SectionHeading eyebrow="Who we serve" title="Technology that fits the way you work." intro="We work with organisations at different stages of their digital journey, shaping services around their people, priorities and operating environments." />
         <div className="grid gap-6 md:grid-cols-3">
           {SEGMENTS.map((s, i) => (
             <Reveal key={s.title} delay={i * 80}>
@@ -146,7 +159,7 @@ function Home() {
       {/* Projects */}
       <Section tone="surface">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Recent projects" title="Work we're proud of." />
+          <SectionHeading eyebrow="Our work" title="Practical solutions. Real-world needs." />
           <div className="mb-12 md:mb-16"><TextLink to="/projects">All projects</TextLink></div>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
@@ -186,16 +199,16 @@ function Home() {
 
       {/* FAQ */}
       <Section tone="surface">
-        <SectionHeading center eyebrow="FAQ" title="Questions about LAN installation." />
-        <FaqList />
+        <SectionHeading center eyebrow="Frequently asked questions" title="A few things you may want to know." intro="Learn more about engaging Clisanco Technologies and the services we provide." />
+        <FaqList items={HOME_FAQS} />
       </Section>
 
-      <CtaBand />
+      <CtaBand title="Let’s find the right technology solution for your organisation." text="Whether you need a website, custom software, reliable infrastructure, stronger security or ongoing IT support, tell us what you want to achieve. We’ll help you map out the next step." />
 
       {/* Insights */}
       <Section className="pt-4 md:pt-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Insights" title="Practical guides for better networks." />
+          <SectionHeading eyebrow="Insights" title="Ideas to help you get more from technology." intro="Explore practical perspectives on digital tools, business systems, infrastructure and safer ways of working." />
           <div className="mb-12 md:mb-16"><Link to="/blog" className="inline-flex items-center gap-1.5 font-semibold text-brand">All articles <ArrowRight className="size-4" /></Link></div>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
