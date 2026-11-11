@@ -40,7 +40,7 @@ export function Header() {
               </DropdownMenuItem>
               {SERVICES.map((service) => (
                 <DropdownMenuItem key={service.slug} asChild>
-                  <Link to="/solutions/$service" params={{ service: service.slug }}>{service.title}</Link>
+                  <Link to={service.to}>{service.title}</Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -70,7 +70,7 @@ export function Header() {
             </summary>
             <div className="mt-3 space-y-1 border-l border-border pl-4">
               {SERVICES.map((service) => (
-                <Link key={service.slug} to="/solutions/$service" params={{ service: service.slug }} onClick={() => setOpen(false)} className="block py-2 text-sm text-muted-foreground hover:text-foreground">
+                <Link key={service.slug} to={service.to} onClick={() => setOpen(false)} className="block py-2 text-sm text-muted-foreground hover:text-foreground">
                   {service.title}
                 </Link>
               ))}
