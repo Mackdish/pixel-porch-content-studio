@@ -57,7 +57,7 @@ function Home() {
           <div>
             <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "IT Solutions for the Future"}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-              {copy?.intro || "Clisanco Technologies helps businesses, schools, institutions and organisations across Kenya make technology work for them. Our services span ICT consultancy, custom software and website development, network infrastructure installation, ICT hardware supply, cloud solutions, cybersecurity, managed IT support, CCTV systems and digital skills training. Whether you need dependable infrastructure, a system built around your operations, stronger digital security or practical skills for your team, we help you plan, implement and use technology with confidence."}
+              {copy?.intro || "We deliver ICT consultancy, software and website development, network installation, hardware supply, cloud and cybersecurity solutions, managed IT support, CCTV systems and practical digital skills training."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild size="lg"><Link to="/contact">Get a Free Site Survey</Link></Button>
