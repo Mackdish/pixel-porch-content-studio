@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794388979811,
+      "tag": "0000_add_profiles_and_admin_roles",
+      "breakpoints": true
+    }
+  ]
 }
