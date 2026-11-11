@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Camera, Cloud, Code2, HardDrive, Lightbulb, Network, ShieldCheck, Wrench, Globe } from "lucide-react";
+import { ArrowRight, Camera, Cloud, Code2, HardDrive, Lightbulb, Network, ShieldCheck, Wrench, Globe, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/Blocks";
@@ -9,7 +9,7 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/solutions")({
   head: () => pageHead(
     "Technology Services & ICT Solutions in Kenya",
-    "Software and website development, ICT consultancy, network installation, hardware supply, cloud solutions, cybersecurity, managed IT support and CCTV installation from Clisanco Technologies."
+    "ICT consultancy, custom software and website development, network infrastructure, hardware supply, cloud solutions, cybersecurity, managed IT support, CCTV installation and digital skills training from Clisanco Technologies."
   ),
   component: Page,
 });
@@ -58,6 +58,12 @@ const SERVICES = [
     points: ["Helpdesk and remote support", "Preventive maintenance and monitoring", "System updates and troubleshooting"],
   },
   {
+    icon: GraduationCap,
+    title: "Digital Skills Training",
+    text: "Practical, accessible training that helps learners, teams and organisations build confidence using digital tools and technology in education, business and everyday work.",
+    points: ["Computer and essential digital literacy", "Office productivity tools and online collaboration", "Digital marketing and content creation", "Practical technology training for teams and institutions"],
+  },
+  {
     icon: Camera,
     title: "CCTV System Installation",
     text: "End-to-end video surveillance solutions for homes, offices, schools and commercial premises, with secure recording and remote monitoring.",
@@ -71,7 +77,7 @@ function Page() {
       <PageHero
         eyebrow="Our services"
         title="Technology solutions that move your organisation forward."
-        intro="From reliable network infrastructure to custom software, cloud, cybersecurity and ongoing IT support, Clisanco brings the expertise to plan, build and support your technology."
+        intro="From network infrastructure, custom software and websites to ICT consultancy, hardware supply, cloud, cybersecurity, CCTV, managed support and digital skills training, Clisanco helps you plan, adopt and get lasting value from technology."
       >
         <Button asChild size="lg"><Link to="/contact">Discuss Your Project</Link></Button>
         <Button asChild size="lg" variant="outline"><Link to="/projects">View Our Projects</Link></Button>
