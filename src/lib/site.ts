@@ -88,7 +88,7 @@ export const PROJECTS = [
 
 // [Placeholder] Blog posts — replace with real articles.
 export const POSTS = [
-  { title: "Cat6 vs Cat6A: which does your office need?", excerpt: "A plain-language guide to choosing cabling that fits your budget and future plans.", tag: "Cabling", date: "Coming soon" },
-  { title: "How to plan Wi-Fi for a school campus", excerpt: "Coverage, capacity and access-point placement for classrooms, halls and offices.", tag: "Wi-Fi", date: "Coming soon" },
-  { title: "5 signs your office network needs an upgrade", excerpt: "Slow transfers, dropped calls and tangled racks are telling you something.", tag: "Planning", date: "Coming soon" },
+  { title: "Choosing the right software for your business", excerpt: "What to consider when replacing manual processes with a custom business system.", tag: "Software", date: "Coming soon" },
+  { title: "Why every organisation needs a secure digital foundation", excerpt: "A practical look at cloud services, cybersecurity, backups and responsible access.", tag: "Digital Strategy", date: "Coming soon" },
+  { title: "Building a website that turns visitors into enquiries", excerpt: "The essentials of a useful business website, from clear messaging to mobile experience.", tag: "Web Development", date: "Coming soon" },
 ];
