@@ -4,14 +4,16 @@ import rack from "@/assets/hero-rack.jpg";
 import wifi from "@/assets/wifi-office.jpg";
 import engineer from "@/assets/cabling-engineer.jpg";
 import design from "@/assets/network-design.jpg";
+import { PHOTOS } from "@/lib/gallery";
 
-const IMGS = { rack, wifi, engineer, design };
+const IMGS = { rack, wifi, engineer, design, exterior: PHOTOS.exterior.src };
+const ALTS: Partial<Record<keyof typeof IMGS, string>> = { exterior: PHOTOS.exterior.alt };
 
 export function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
   return (
     <article className="card-lift group h-full overflow-hidden rounded-3xl border border-border bg-card">
       <div className="overflow-hidden">
-        <img src={IMGS[project.img]} alt={project.title} loading="lazy" width={1200} height={960} className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+        <img src={IMGS[project.img]} alt={ALTS[project.img] ?? project.title} loading="lazy" width={1200} height={960} className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
       </div>
       <div className="p-7">
         <p className="text-xs font-semibold uppercase tracking-wider text-brand">{project.tag}</p>

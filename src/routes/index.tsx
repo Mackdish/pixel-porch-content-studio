@@ -8,9 +8,9 @@ import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/B
 import { ProjectCard, PostCard } from "@/components/site/Cards";
 import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
 import { pageHead } from "@/lib/seo";
-import heroImg from "@/assets/hero-rack.jpg";
+import { PHOTOS } from "@/lib/gallery";
+import rackImg from "@/assets/hero-rack.jpg";
 import designImg from "@/assets/network-design.jpg";
-import cablingImg from "@/assets/cabling-engineer.jpg";
 import wifiImg from "@/assets/wifi-office.jpg";
 
 export const Route = createFileRoute("/")({
@@ -34,9 +34,9 @@ const SEGMENTS = [
 
 const FEATURES = [
   { title: "Designed before it's installed", text: "Every project starts with a site survey and a network design. You get a clear bill of quantities so you know exactly what's going in and why.", img: designImg, cta: "See our process", to: "/process" as const },
-  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: cablingImg, cta: "Explore network installation", to: "/network-installation" as const },
+  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: PHOTOS.cablingDesk.src, alt: PHOTOS.cablingDesk.alt, cta: "Explore network installation", to: "/network-installation" as const },
   { title: "Fast, reliable Wi-Fi in every corner", text: "We plan coverage, place access points where they actually perform, and separate guest and staff networks for speed and safety.", img: wifiImg, cta: "Talk to an engineer", to: "/contact" as const },
-  { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: heroImg, cta: "View all solutions", to: "/solutions" as const },
+  { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: rackImg, cta: "View all solutions", to: "/solutions" as const },
 ];
 
 function Home() {
@@ -57,7 +57,7 @@ function Home() {
           </div>
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-brand-soft" aria-hidden="true" />
-            <img src={heroImg} alt="Network rack with neatly labelled blue Cat6 patch cables and switches" width={1280} height={1024} fetchPriority="high" className="aspect-[5/4] w-full rounded-3xl object-cover shadow-lift" />
+            <img src={PHOTOS.teamDrill.src} alt={PHOTOS.teamDrill.alt} width={1280} height={1024} fetchPriority="high" className="aspect-[5/4] w-full rounded-3xl object-cover shadow-lift" />
           </div>
         </div>
       </section>
@@ -113,7 +113,7 @@ function Home() {
             <Reveal key={f.title}>
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
                 <div className={i % 2 ? "lg:order-2" : ""}>
-                  <img src={f.img} alt={f.title} loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover shadow-soft" />
+                  <img src={f.img} alt={"alt" in f ? f.alt : f.title} loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover shadow-soft" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold leading-tight md:text-5xl">{f.title}</h2>

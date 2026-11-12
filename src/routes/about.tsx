@@ -3,7 +3,7 @@ import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/Blocks";
 import { STATS } from "@/lib/site";
 import { pageHead } from "@/lib/seo";
-import img from "@/assets/network-design.jpg";
+import { PHOTOS } from "@/lib/gallery";
 
 export const Route = createFileRoute("/about")({
   head: () => pageHead("About Us", "Clisanco Technologies Limited is a Kisumu-based ICT company and Africa's digital transformation partner, specialising in network infrastructure."),
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/about")({
               <p>We believe in no black boxes. You get clear proposals, regular progress notes and full documentation, so your network is yours to understand and grow.</p>
             </div>
           </div>
-          <img src={img} alt="Network design on a floor plan with topology diagram" loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover shadow-soft" />
+          <img src={PHOTOS.teamBriefing.src} alt={PHOTOS.teamBriefing.alt} loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover object-[50%_38%] shadow-soft" />
         </div>
       </Section>
       <Section tone="surface">

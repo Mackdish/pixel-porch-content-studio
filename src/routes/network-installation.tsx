@@ -6,7 +6,7 @@ import { CheckList, CtaBand, FaqList, ProcessTimeline } from "@/components/site/
 import { Reveal } from "@/components/site/Reveal";
 import { FAQS } from "@/lib/site";
 import { pageHead } from "@/lib/seo";
-import img from "@/assets/cabling-engineer.jpg";
+import { PHOTOS } from "@/lib/gallery";
 
 export const Route = createFileRoute("/network-installation")({
   head: () => pageHead("LAN Installation Kisumu & Kenya", "End-to-end LAN installation in Kisumu and across Kenya: structured cabling, fibre, switches, Wi-Fi, racks, firewalls, testing, certification and documentation."),
@@ -56,7 +56,7 @@ function Page() {
       </Section>
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <img src={img} alt="Engineer certifying an Ethernet cable run with a tester" loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover shadow-soft" />
+          <img src={PHOTOS.ladderRack.src} alt={PHOTOS.ladderRack.alt} loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover object-[50%_22%] shadow-soft" />
           <div>
             <SectionHeading eyebrow="Deliverables" title="What you get at handover." intro="Everything you need to run, extend or audit your network later." />
             <CheckList items={DELIVERABLES} />
