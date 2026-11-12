@@ -9,16 +9,16 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
   loader: () => getPublishedProjects(),
-  head: () => pageHead("Projects", "Selected network installation, Wi-Fi and server-room projects delivered by Clisanco Technologies across Kenya."),
+  head: () => pageHead("Projects", "A selection of websites, digital platforms, e-commerce experiences and ICT projects delivered by Clisanco Technologies."),
   component: ProjectsPage,
 });
 
 function ProjectsPage() {
   const managedProjects = Route.useLoaderData();
-  const projects = managedProjects.length > 0 ? managedProjects : PROJECTS;
+  const projects = [...PROJECTS, ...managedProjects.filter((managed) => !PROJECTS.some((project) => project.title === managed.title))];
   return (
     <>
-      <PageHero eyebrow="Projects" title="Networks we've built." intro="A selection of recent installations for schools, businesses and organisations." />
+      <PageHero eyebrow="Projects" title="Digital solutions in action." intro="Explore websites, online platforms, e-commerce experiences and ICT projects created to solve practical business and organisational needs." />
       <Section>
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((p, i) => <Reveal key={"id" in p ? p.id : p.title} delay={i * 60}><ProjectCard project={p} /></Reveal>)}
