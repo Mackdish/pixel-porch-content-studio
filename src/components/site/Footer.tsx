@@ -31,7 +31,7 @@ export function Footer() {
         <div className="md:col-span-3">
           <h3 className="mb-4 text-sm font-semibold">Solutions</h3>
           <ul className="space-y-3">
-            <li><Link to="/network-installation" className={linkCls}>Network Infrastructure Installation</Link></li>
+            <li><Link to="/solutions" className={linkCls}>Network Infrastructure</Link></li>
             <li><Link to="/solutions" className={linkCls}>ICT Hardware Supply</Link></li>
             <li><Link to="/solutions" className={linkCls}>CCTV Installation</Link></li>
             <li><Link to="/solutions" className={linkCls}>Cybersecurity</Link></li>

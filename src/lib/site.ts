@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Clisanco Technologies Limited",
   short: "Clisanco",
-  tagline: "Africa's Digital Transformation Partner",
+  tagline: "IT Solutions for the Future",
   phone: "+254 791 491636",
   phoneHref: "tel:+254791491636",
   whatsapp: "https://wa.me/254791491636",
@@ -22,11 +22,11 @@ export const STATS = [
 
 export const PROCESS = [
   { title: "Discovery", text: "A free 30-minute call to understand your goals, users and site." },
-  { title: "Assessment", text: "An on-site walk-through to map rooms, routes and existing equipment." },
-  { title: "Proposal", text: "A written proposal and bill of quantities within 3 working days." },
-  { title: "Delivery", text: "Installation by certified engineers, with weekly progress notes." },
-  { title: "Handover", text: "Full documentation and a sign-off checklist you walk through with us." },
-  { title: "Support", text: "An optional SLA plan to keep your network healthy long-term." },
+  { title: "Assessment", text: "We review your current setup, users, requirements and any technical or operational constraints." },
+  { title: "Proposal", text: "You receive a clear scope, recommended approach, timelines and an itemised quotation where applicable." },
+  { title: "Implementation", text: "We build, configure, supply or deploy the agreed solution, keeping you informed as work progresses." },
+  { title: "Handover", text: "We walk you through the completed work, share relevant documentation and help your team get started." },
+  { title: "Ongoing Support", text: "Where required, we provide maintenance, troubleshooting and continued technical assistance." },
 ];
 
 export const TESTIMONIALS = [
@@ -84,11 +84,15 @@ export const PROJECTS = [
   { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls." },
   { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office." },
   { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility." },
+  { title: "EduTech", tag: "Education Technology", text: "An education technology website presenting digital learning services and resources for its target audience.", img: "https://image.thum.io/get/width/1200/crop/800/https://edutech.top/", url: "https://edutech.top" },
+  { title: "Jatitosa Properties", tag: "Real Estate", text: "A real estate website designed to introduce the property brand and give prospective clients a clear route to explore properties and make enquiries.", img: "https://image.thum.io/get/width/1200/crop/800/https://jatitosaproperties.co.ke/", url: "https://jatitosaproperties.co.ke" },
+  { title: "Intech Computer Shop", tag: "E-commerce", text: "An online electronics store with product categories, promotional offers, shopping features and customer support information.", img: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/676723e5-f5a6-4367-9987-feab6f279315/id-preview-75ac8dfd--ecb0be3e-3b32-4a9e-9e36-33ee2a225f65.lovable.app-1777489747793.png", url: "https://intechcomputershop.co.ke" },
+  { title: "TradeMall", tag: "Advertising Technology", text: "An advertising marketplace connecting advertisers and publishers, with campaign targeting, ad formats and performance analytics for African audiences.", img: "https://image.thum.io/get/width/1200/crop/800/https://trademall.co.ke/", url: "https://trademall.co.ke" },
 ] as const;
 
 // [Placeholder] Blog posts — replace with real articles.
 export const POSTS = [
-  { title: "Cat6 vs Cat6A: which does your office need?", excerpt: "A plain-language guide to choosing cabling that fits your budget and future plans.", tag: "Cabling", date: "Coming soon" },
-  { title: "How to plan Wi-Fi for a school campus", excerpt: "Coverage, capacity and access-point placement for classrooms, halls and offices.", tag: "Wi-Fi", date: "Coming soon" },
-  { title: "5 signs your office network needs an upgrade", excerpt: "Slow transfers, dropped calls and tangled racks are telling you something.", tag: "Planning", date: "Coming soon" },
+  { title: "Choosing the right software for your business", excerpt: "What to consider when replacing manual processes with a custom business system.", tag: "Software", date: "Coming soon" },
+  { title: "Why every organisation needs a secure digital foundation", excerpt: "A practical look at cloud services, cybersecurity, backups and responsible access.", tag: "Digital Strategy", date: "Coming soon" },
+  { title: "Building a website that turns visitors into enquiries", excerpt: "The essentials of a useful business website, from clear messaging to mobile experience.", tag: "Web Development", date: "Coming soon" },
 ];

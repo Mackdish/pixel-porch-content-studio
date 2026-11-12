@@ -1,56 +1,77 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, HardDrive, Server, Wifi, Wrench, Quote } from "lucide-react";
+import { ArrowRight, Cable, Wrench, GraduationCap, Code2, Cloud, Camera, Lightbulb, HardDrive, ShieldCheck, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/Blocks";
-import { ProjectCard, PostCard } from "@/components/site/Cards";
+import { ProjectGrid, PostCard } from "@/components/site/Cards";
 import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
+import { getPublishedProjects, getPublishedPage } from "@/lib/content.functions";
+import { parseContent } from "@/lib/content-types";
+import { useQuery } from "@tanstack/react-query";
 import { pageHead } from "@/lib/seo";
 import { PHOTOS } from "@/lib/gallery";
 
 export const Route = createFileRoute("/")({
-  head: () => pageHead("LAN & Network Installation in Kisumu, Kenya", "Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals and enterprises across Kenya, by certified engineers in Kisumu."),
+  loader: () => getPublishedProjects(),
+  head: () => pageHead("IT Solutions for the Future | Clisanco Technologies", "Clisanco Technologies provides ICT consultancy, custom software and website development, network infrastructure installation, ICT hardware supply, cloud solutions, cybersecurity, managed IT support, CCTV installation and practical digital skills training across Kenya."),
   component: Home,
 });
 
 const TILES = [
-  { icon: Cable, title: "LAN & Structured Cabling", text: "Cat6/Cat6A runs and fibre backbones, tested and certified." },
-  { icon: Wifi, title: "Wi-Fi & Wireless Design", text: "Site surveys, heatmaps and high-density coverage." },
-  { icon: HardDrive, title: "Network Hardware Supply", text: "Switches, routers, firewalls, racks and UPS." },
-  { icon: Server, title: "Server Room & Rack Setup", text: "Clean racks, cooling-aware layouts and power." },
-  { icon: Wrench, title: "Managed IT Support", text: "SLA-backed maintenance that keeps you online." },
+  { icon: Lightbulb, title: "ICT Consultancy", to: "/solutions/ict-consultancy" as const, text: "Technology assessments, practical IT advice and digital transformation roadmaps aligned with your goals and budget." },
+  { icon: Code2, title: "Software Development", to: "/solutions/software-development" as const, text: "Custom business systems, management platforms, portals and workflow tools built around how your organisation works." },
+  { icon: Globe, title: "Website Development", to: "/solutions/website-development" as const, text: "Professional, responsive business websites, e-commerce platforms and online experiences that turn visitors into enquiries." },
+  { icon: HardDrive, title: "ICT Hardware Supply", to: "/solutions/ict-hardware-supply" as const, text: "Computers, servers, networking equipment and accessories selected for your operational and budget requirements." },
+  { icon: Cloud, title: "Cloud Solutions", to: "/solutions/cloud-solutions" as const, text: "Cloud hosting, migration, storage, collaboration, backup and recovery solutions that support flexible working." },
+  { icon: ShieldCheck, title: "Cybersecurity Services", to: "/solutions/cybersecurity-services" as const, text: "Security reviews and practical safeguards for your networks, devices, user accounts and business information." },
+  { icon: Cable, title: "Network Infrastructure", to: "/solutions/network-infrastructure-installation" as const, text: "Structured cabling, fibre, LAN/WAN, Wi-Fi, switching and server-room infrastructure for dependable connectivity." },
+  { icon: Wrench, title: "Managed IT Support", to: "/solutions/managed-it-support" as const, text: "Ongoing technical assistance, troubleshooting, maintenance and support to keep your systems working." },
+  { icon: Camera, title: "CCTV Installation", to: "/solutions/cctv-system-installation" as const, text: "Video surveillance planning, camera installation, recording configuration and remote monitoring for your premises." },
+  { icon: GraduationCap, title: "Digital Skills Training", to: "/solutions/digital-skills-training" as const, text: "Practical digital literacy, computer skills and productivity training for learners, employees and teams." },
 ];
 
 const SEGMENTS = [
-  { title: "Schools & Institutions", text: "Campus-wide cabling and Wi-Fi that handles hundreds of learners at once." },
-  { title: "Businesses & Offices", text: "Reliable, tidy networks that grow with your team, from 5 desks to 5 floors." },
-  { title: "Hospitals, NGOs & Government", text: "Secure, segmented and fully documented networks for critical work." },
+  { title: "Schools & Learning Institutions", text: "Equip educators, administrators and learners with dependable systems, connected campuses, digital platforms and practical technology skills." },
+  { title: "Businesses & Growing Teams", text: "Build a stronger digital foundation with business software, professional websites, secure cloud tools, reliable hardware and responsive IT support." },
+  { title: "NGOs, Public & Community Organisations", text: "Make technology easier to manage through fit-for-purpose ICT advice, connected infrastructure, secure information systems and staff training." },
 ];
 
-type Feature = { title: string; text: string; img: string; alt: string; pos?: string; cta: string; to: "/process" | "/network-installation" | "/contact" | "/solutions" };
+type Feature = { title: string; text: string; img: string; alt: string; pos?: string; cta: string; to: "/process" | "/solutions" | "/contact" };
 
 const FEATURES: Feature[] = [
-  { title: "Designed before it's installed", text: "Every project starts with a site survey and a network design. You get a clear bill of quantities so you know exactly what's going in and why.", img: PHOTOS.exterior.src, alt: PHOTOS.exterior.alt, cta: "See our process", to: "/process" },
-  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: PHOTOS.cablingDesk.src, alt: PHOTOS.cablingDesk.alt, cta: "Explore network installation", to: "/network-installation" },
-  { title: "Fast, reliable Wi-Fi in every corner", text: "We plan coverage, place access points where they actually perform, and separate guest and staff networks for speed and safety.", img: PHOTOS.socketInstall.src, alt: PHOTOS.socketInstall.alt, pos: "object-[50%_58%]", cta: "Talk to an engineer", to: "/contact" },
-  { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: PHOTOS.rackCabinet.src, alt: PHOTOS.rackCabinet.alt, cta: "View all solutions", to: "/solutions" },
+  { title: "Technology planned around your goals", text: "The right solution starts with understanding your organisation. We assess your needs, existing systems, users and budget before recommending an approach, whether you need a new platform, upgraded infrastructure or ongoing support.", img: PHOTOS.teamBriefing.src, alt: PHOTOS.teamBriefing.alt, pos: "object-[50%_38%]", cta: "See how we work", to: "/process" },
+  { title: "Digital platforms that make work easier", text: "We develop custom software and responsive websites that help organisations serve customers, manage information and simplify everyday processes. From business websites to tailored management systems, we focus on usability and practical value.", img: PHOTOS.socketInstall.src, alt: PHOTOS.socketInstall.alt, pos: "object-[50%_58%]", cta: "Explore software and web services", to: "/solutions" },
+  { title: "Infrastructure you can depend on", text: "From structured cabling and Wi-Fi to cloud environments and ICT hardware, we help create a reliable technology foundation. Our work is planned for the way your people communicate, collaborate and access information.", img: PHOTOS.cablingDesk.src, alt: PHOTOS.cablingDesk.alt, cta: "Explore infrastructure solutions", to: "/solutions" },
+  { title: "Protection, support and skills for the long term", text: "Technology needs attention after implementation. We help organisations strengthen security, maintain systems, monitor premises with CCTV and build staff confidence through practical digital skills training.", img: PHOTOS.ladderRack.src, alt: PHOTOS.ladderRack.alt, pos: "object-[50%_22%]", cta: "Talk to our team", to: "/contact" },
+];
+
+const HOME_FAQS = [
+  { q: "What services does Clisanco Technologies provide?", a: "We provide ICT consultancy, custom software development, website development, ICT hardware supply, cloud solutions, cybersecurity, network infrastructure installation, managed IT support, CCTV system installation and digital skills training." },
+  { q: "Can you recommend a solution if we're not sure what we need?", a: "Yes. Start with a consultation and tell us about your organisation, the challenge you want to solve and your budget. We can assess your requirements and recommend a practical way forward." },
+  { q: "Do you work with schools, businesses and institutions?", a: "Yes. We support businesses, schools and learning institutions, NGOs, public organisations and other teams. We shape the scope of work around each organisation's needs." },
+  { q: "Can you combine several services into one project?", a: "Yes. A project may combine consultancy, hardware supply, network infrastructure, cloud services, cybersecurity and staff training. We can help coordinate the services required for your objectives." },
+  { q: "Do you provide support after a project is completed?", a: "Yes. Depending on the service, we can provide maintenance, troubleshooting, system updates and ongoing technical support after implementation." },
+  { q: "Where do you provide your services?", a: "We are based in Kisumu and take on projects across Kenya. Contact us with your location and requirements so we can discuss availability and delivery." },
 ];
 
 function Home() {
+  const managedProjects = Route.useLoaderData();
+  const homeCopy = useQuery({ queryKey: ["public-page-copy", "home"], queryFn: () => getPublishedPage({ data: { slug: "home" } }), staleTime: 60_000 });
+  const copy = homeCopy.data ? parseContent("page", homeCopy.data.content) : null;
+  const projects = [...PROJECTS, ...managedProjects.filter((managed) => !PROJECTS.some((project) => project.title === managed.title))];
   return (
     <>
       {/* Hero */}
       <section className="pb-16 pt-28 md:pb-24 md:pt-36">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
           <div>
-            <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">Network infrastructure, built to last.</h1>
+            <h1 className="text-5xl font-extrabold leading-[1.02] md:text-7xl">{copy?.heading || "IT Solutions for the Future"}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-              Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals, and enterprises across Kenya, designed and installed by certified engineers.
+              {copy?.intro || "Clisanco Technologies helps businesses and institutions put technology to work. We provide ICT consultancy, custom software, websites, hardware, cloud and cybersecurity solutions, network infrastructure, managed IT support, CCTV systems and practical digital skills training."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild size="lg"><Link to="/contact">Get a Free Site Survey</Link></Button>
+              <Button asChild size="lg"><Link to="/contact">Book a Free Consultation</Link></Button>
               <Button asChild size="lg" variant="outline"><Link to="/projects">See Our Work</Link></Button>
             </div>
           </div>
@@ -61,27 +82,18 @@ function Home() {
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="border-y border-border py-10">
-        <div className="mx-auto max-w-7xl px-5 text-center md:px-8">
-          <p className="text-sm text-muted-foreground">Trusted by schools, NGOs, healthcare and businesses across Kenya and beyond</p>
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-14 gap-y-4 text-2xl font-bold text-muted-foreground/60">
-            {["Cisco", "Microsoft", "Google", "AWS"].map((n) => <li key={n}>{n}</li>)}
-          </ul>
-        </div>
-      </section>
-
-      {/* Everything your network needs */}
+      {/* Full service portfolio */}
       <Section>
-        <SectionHeading eyebrow="What we do" title="Everything your network needs." intro="One accountable partner from the first cable to the last access point." />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <SectionHeading eyebrow="What we do" title="Everything you need to make technology work better." intro="From the first technology assessment to software development, infrastructure, security and ongoing support, we bring essential ICT services together under one roof." />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TILES.map((t, i) => (
             <Reveal key={t.title} delay={i * 60}>
-              <div className="card-lift h-full rounded-3xl border border-border bg-card p-7">
+              <Link to={t.to} className="card-lift group block h-full rounded-3xl border border-border bg-card p-7 transition-colors hover:border-brand/50">
                 <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-brand-soft text-brand"><t.icon className="size-6" /></span>
-                <h3 className="mt-6 text-lg font-bold leading-snug">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.text}</p>
-              </div>
+                <h3 className="mt-6 text-lg font-bold leading-snug group-hover:text-brand">{t.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">Explore service <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -89,7 +101,7 @@ function Home() {
 
       {/* Segments */}
       <Section tone="surface">
-        <SectionHeading eyebrow="Who we serve" title="Solutions for every kind of organisation." />
+        <SectionHeading eyebrow="Who we serve" title="Technology that fits the way you work." intro="We work with organisations at different stages of their digital journey, shaping services around their people, priorities and operating environments." />
         <div className="grid gap-6 md:grid-cols-3">
           {SEGMENTS.map((s, i) => (
             <Reveal key={s.title} delay={i * 80}>
@@ -147,50 +159,54 @@ function Home() {
       {/* Projects */}
       <Section tone="surface">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Recent projects" title="Work we're proud of." />
+          <SectionHeading eyebrow="Our work" title="Practical solutions. Real-world needs." />
           <div className="mb-12 md:mb-16"><TextLink to="/projects">All projects</TextLink></div>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {PROJECTS.map((p, i) => <div key={p.title} className={"img" in p ? "md:col-span-3" : ""}><Reveal delay={i * 60}><ProjectCard project={p} /></Reveal></div>)}
-        </div>
+<ProjectGrid projects={projects} />
       </Section>
 
       {/* Testimonials */}
       <Section>
-        <SectionHeading eyebrow="Testimonials" title="What our clients say." />
-        <Carousel opts={{ align: "start" }} className="mx-auto max-w-6xl">
-          <CarouselContent>
-            {TESTIMONIALS.map((t) => (
-              <CarouselItem key={t.quote} className="md:basis-1/2 lg:basis-1/3">
-                <figure className="flex h-full flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-soft">
-                  <div>
-                    <Quote className="size-8 text-brand" aria-hidden="true" />
-                    <blockquote className="mt-5 text-lg font-medium leading-relaxed">"{t.quote}"</blockquote>
-                  </div>
-                  <figcaption className="mt-8 text-sm"><span className="font-bold">{t.name}</span><br /><span className="text-muted-foreground">{t.role}</span></figcaption>
-                </figure>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="mt-8 flex justify-center gap-3 lg:hidden">
-            <CarouselPrevious className="static translate-y-0" />
-            <CarouselNext className="static translate-y-0" />
-          </div>
-        </Carousel>
+        <SectionHeading eyebrow="Testimonials" title="What our clients say." intro="Feedback from organisations and people who have worked with our team." />
+        <div className="grid gap-5 md:grid-cols-3">
+          {TESTIMONIALS.map((testimonial) => (
+            <Reveal key={testimonial.name}>
+              <figure className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-soft">
+                <blockquote className="flex-1 text-base leading-relaxed text-muted-foreground">“{testimonial.quote}”</blockquote>
+                <figcaption className="mt-7 border-t border-border pt-5">
+                  <p className="font-bold">{testimonial.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{testimonial.role}</p>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* Trusted partners */}
+      <Section tone="surface">
+        <SectionHeading eyebrow="Trusted partners" title="Organisations we are proud to work alongside." intro="We value the relationships we build with organisations making a difference in their communities and industries." />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {["Rongo NGCDF", "Nyando NGCDF", "Arianda Farms", "Youth Rise Initiative"].map((partner) => (
+            <div key={partner} className="flex min-h-28 items-center justify-center rounded-3xl border border-border bg-card px-6 py-7 text-center text-lg font-bold tracking-tight shadow-soft">
+              {partner}
+            </div>
+          ))}
+        </div>
       </Section>
 
       {/* FAQ */}
       <Section tone="surface">
-        <SectionHeading center eyebrow="FAQ" title="Questions about LAN installation." />
-        <FaqList />
+        <SectionHeading center eyebrow="Frequently asked questions" title="A few things you may want to know." intro="Learn more about engaging Clisanco Technologies and the services we provide." />
+        <FaqList items={HOME_FAQS} />
       </Section>
 
-      <CtaBand />
+      <CtaBand title="Let’s find the right technology solution for your organisation." text="Whether you need a website, custom software, reliable infrastructure, stronger security or ongoing IT support, tell us what you want to achieve. We’ll help you map out the next step." />
 
       {/* Insights */}
       <Section className="pt-4 md:pt-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Insights" title="Practical guides for better networks." />
+          <SectionHeading eyebrow="Insights" title="Ideas to help you get more from technology." intro="Explore practical perspectives on digital tools, business systems, infrastructure and safer ways of working." />
           <div className="mb-12 md:mb-16"><Link to="/blog" className="inline-flex items-center gap-1.5 font-semibold text-brand">All articles <ArrowRight className="size-4" /></Link></div>
         </div>
         <div className="grid gap-6 md:grid-cols-3">

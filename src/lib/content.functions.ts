@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import type { SupabaseClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
@@ -43,6 +43,33 @@ function friendlyDbError(error: { code?: string; message: string }): Error {
   if (error.code === "42501") return new Error("You don't have permission to change this content.");
   return new Error(error.message);
 }
+
+/** Public, published project records used by the homepage and projects page. */
+export const getPublishedProjects = createServerFn({ method: "GET" }).handler(async (): Promise<ContentRow[]> => {
+  const url = import.meta.env["VITE_SUPABASE_URL"] || process.env["SUPABASE_URL"];
+  const key = import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] || process.env["SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) throw new Error("The project catalogue is temporarily unavailable.");
+  const supabase = createClient<Database>(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  const { data, error } = await supabase.from("site_content").select("*")
+    .eq("kind", "project").eq("published", true)
+    .order("sort_order", { ascending: true }).order("created_at", { ascending: false });
+  if (error) throw friendlyDbError(error);
+  return (data ?? []) as ContentRow[];
+});
+
+/** Public page copy selected by its stable page key (for example: about, solutions). */
+export const getPublishedPage = createServerFn({ method: "GET" })
+  .validator(z.object({ slug: z.string().min(1).max(120) }))
+  .handler(async ({ data }): Promise<ContentRow | null> => {
+    const url = import.meta.env["VITE_SUPABASE_URL"] || process.env["SUPABASE_URL"];
+    const key = import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] || process.env["SUPABASE_PUBLISHABLE_KEY"];
+    if (!url || !key) return null;
+    const supabase = createClient<Database>(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+    const { data: row, error } = await supabase.from("site_content").select("*")
+      .eq("kind", "page").eq("slug", data.slug).eq("published", true).maybeSingle();
+    if (error) throw friendlyDbError(error);
+    return row as ContentRow | null;
+  });
 
 export const getAdminAccess = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])

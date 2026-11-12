@@ -17,12 +17,22 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DataProtectionRouteImport } from './routes/data-protection'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as NetworkInstallationRouteImport } from './routes/network-installation'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SolutionsServiceRouteImport } from './routes/solutions.$service'
+import { Route as SolutionsCctvSystemInstallationRouteImport } from './routes/solutions.cctv-system-installation'
+import { Route as SolutionsCloudSolutionsRouteImport } from './routes/solutions.cloud-solutions'
+import { Route as SolutionsCybersecurityServicesRouteImport } from './routes/solutions.cybersecurity-services'
+import { Route as SolutionsDigitalSkillsTrainingRouteImport } from './routes/solutions.digital-skills-training'
+import { Route as SolutionsIctConsultancyRouteImport } from './routes/solutions.ict-consultancy'
+import { Route as SolutionsIctHardwareSupplyRouteImport } from './routes/solutions.ict-hardware-supply'
+import { Route as SolutionsManagedItSupportRouteImport } from './routes/solutions.managed-it-support'
+import { Route as SolutionsNetworkInfrastructureInstallationRouteImport } from './routes/solutions.network-infrastructure-installation'
+import { Route as SolutionsSoftwareDevelopmentRouteImport } from './routes/solutions.software-development'
+import { Route as SolutionsWebsiteDevelopmentRouteImport } from './routes/solutions.website-development'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,11 +74,6 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NetworkInstallationRoute = NetworkInstallationRouteImport.update({
-  id: '/network-installation',
-  path: '/network-installation',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -94,6 +99,69 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsServiceRoute = SolutionsServiceRouteImport.update({
+  id: '/$service',
+  path: '/$service',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsCctvSystemInstallationRoute =
+  SolutionsCctvSystemInstallationRouteImport.update({
+    id: '/cctv-system-installation',
+    path: '/cctv-system-installation',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsCloudSolutionsRoute = SolutionsCloudSolutionsRouteImport.update({
+  id: '/cloud-solutions',
+  path: '/cloud-solutions',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsCybersecurityServicesRoute =
+  SolutionsCybersecurityServicesRouteImport.update({
+    id: '/cybersecurity-services',
+    path: '/cybersecurity-services',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsDigitalSkillsTrainingRoute =
+  SolutionsDigitalSkillsTrainingRouteImport.update({
+    id: '/digital-skills-training',
+    path: '/digital-skills-training',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsIctConsultancyRoute = SolutionsIctConsultancyRouteImport.update({
+  id: '/ict-consultancy',
+  path: '/ict-consultancy',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsIctHardwareSupplyRoute =
+  SolutionsIctHardwareSupplyRouteImport.update({
+    id: '/ict-hardware-supply',
+    path: '/ict-hardware-supply',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsManagedItSupportRoute =
+  SolutionsManagedItSupportRouteImport.update({
+    id: '/managed-it-support',
+    path: '/managed-it-support',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsNetworkInfrastructureInstallationRoute =
+  SolutionsNetworkInfrastructureInstallationRouteImport.update({
+    id: '/network-infrastructure-installation',
+    path: '/network-infrastructure-installation',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsSoftwareDevelopmentRoute =
+  SolutionsSoftwareDevelopmentRouteImport.update({
+    id: '/software-development',
+    path: '/software-development',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
+const SolutionsWebsiteDevelopmentRoute =
+  SolutionsWebsiteDevelopmentRouteImport.update({
+    id: '/website-development',
+    path: '/website-development',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -104,12 +172,22 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/data-protection': typeof DataProtectionRoute
   '/faq': typeof FaqRoute
-  '/network-installation': typeof NetworkInstallationRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
-  '/solutions': typeof SolutionsRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
+  '/solutions/cctv-system-installation': typeof SolutionsCctvSystemInstallationRoute
+  '/solutions/cloud-solutions': typeof SolutionsCloudSolutionsRoute
+  '/solutions/cybersecurity-services': typeof SolutionsCybersecurityServicesRoute
+  '/solutions/digital-skills-training': typeof SolutionsDigitalSkillsTrainingRoute
+  '/solutions/ict-consultancy': typeof SolutionsIctConsultancyRoute
+  '/solutions/ict-hardware-supply': typeof SolutionsIctHardwareSupplyRoute
+  '/solutions/managed-it-support': typeof SolutionsManagedItSupportRoute
+  '/solutions/network-infrastructure-installation': typeof SolutionsNetworkInfrastructureInstallationRoute
+  '/solutions/software-development': typeof SolutionsSoftwareDevelopmentRoute
+  '/solutions/website-development': typeof SolutionsWebsiteDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -120,12 +198,22 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/data-protection': typeof DataProtectionRoute
   '/faq': typeof FaqRoute
-  '/network-installation': typeof NetworkInstallationRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
-  '/solutions': typeof SolutionsRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
+  '/solutions/cctv-system-installation': typeof SolutionsCctvSystemInstallationRoute
+  '/solutions/cloud-solutions': typeof SolutionsCloudSolutionsRoute
+  '/solutions/cybersecurity-services': typeof SolutionsCybersecurityServicesRoute
+  '/solutions/digital-skills-training': typeof SolutionsDigitalSkillsTrainingRoute
+  '/solutions/ict-consultancy': typeof SolutionsIctConsultancyRoute
+  '/solutions/ict-hardware-supply': typeof SolutionsIctHardwareSupplyRoute
+  '/solutions/managed-it-support': typeof SolutionsManagedItSupportRoute
+  '/solutions/network-infrastructure-installation': typeof SolutionsNetworkInfrastructureInstallationRoute
+  '/solutions/software-development': typeof SolutionsSoftwareDevelopmentRoute
+  '/solutions/website-development': typeof SolutionsWebsiteDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -137,12 +225,22 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/data-protection': typeof DataProtectionRoute
   '/faq': typeof FaqRoute
-  '/network-installation': typeof NetworkInstallationRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
-  '/solutions': typeof SolutionsRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/solutions/$service': typeof SolutionsServiceRoute
+  '/solutions/cctv-system-installation': typeof SolutionsCctvSystemInstallationRoute
+  '/solutions/cloud-solutions': typeof SolutionsCloudSolutionsRoute
+  '/solutions/cybersecurity-services': typeof SolutionsCybersecurityServicesRoute
+  '/solutions/digital-skills-training': typeof SolutionsDigitalSkillsTrainingRoute
+  '/solutions/ict-consultancy': typeof SolutionsIctConsultancyRoute
+  '/solutions/ict-hardware-supply': typeof SolutionsIctHardwareSupplyRoute
+  '/solutions/managed-it-support': typeof SolutionsManagedItSupportRoute
+  '/solutions/network-infrastructure-installation': typeof SolutionsNetworkInfrastructureInstallationRoute
+  '/solutions/software-development': typeof SolutionsSoftwareDevelopmentRoute
+  '/solutions/website-development': typeof SolutionsWebsiteDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -155,12 +253,22 @@ export interface FileRouteTypes {
     | '/contact'
     | '/data-protection'
     | '/faq'
-    | '/network-installation'
     | '/privacy'
     | '/process'
     | '/projects'
     | '/solutions'
     | '/terms'
+    | '/solutions/$service'
+    | '/solutions/cctv-system-installation'
+    | '/solutions/cloud-solutions'
+    | '/solutions/cybersecurity-services'
+    | '/solutions/digital-skills-training'
+    | '/solutions/ict-consultancy'
+    | '/solutions/ict-hardware-supply'
+    | '/solutions/managed-it-support'
+    | '/solutions/network-infrastructure-installation'
+    | '/solutions/software-development'
+    | '/solutions/website-development'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -171,12 +279,22 @@ export interface FileRouteTypes {
     | '/contact'
     | '/data-protection'
     | '/faq'
-    | '/network-installation'
     | '/privacy'
     | '/process'
     | '/projects'
     | '/solutions'
     | '/terms'
+    | '/solutions/$service'
+    | '/solutions/cctv-system-installation'
+    | '/solutions/cloud-solutions'
+    | '/solutions/cybersecurity-services'
+    | '/solutions/digital-skills-training'
+    | '/solutions/ict-consultancy'
+    | '/solutions/ict-hardware-supply'
+    | '/solutions/managed-it-support'
+    | '/solutions/network-infrastructure-installation'
+    | '/solutions/software-development'
+    | '/solutions/website-development'
   id:
     | '__root__'
     | '/'
@@ -187,12 +305,22 @@ export interface FileRouteTypes {
     | '/contact'
     | '/data-protection'
     | '/faq'
-    | '/network-installation'
     | '/privacy'
     | '/process'
     | '/projects'
     | '/solutions'
     | '/terms'
+    | '/solutions/$service'
+    | '/solutions/cctv-system-installation'
+    | '/solutions/cloud-solutions'
+    | '/solutions/cybersecurity-services'
+    | '/solutions/digital-skills-training'
+    | '/solutions/ict-consultancy'
+    | '/solutions/ict-hardware-supply'
+    | '/solutions/managed-it-support'
+    | '/solutions/network-infrastructure-installation'
+    | '/solutions/software-development'
+    | '/solutions/website-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -204,11 +332,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DataProtectionRoute: typeof DataProtectionRoute
   FaqRoute: typeof FaqRoute
-  NetworkInstallationRoute: typeof NetworkInstallationRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
   ProjectsRoute: typeof ProjectsRoute
-  SolutionsRoute: typeof SolutionsRoute
+  SolutionsRoute: typeof SolutionsRouteWithChildren
   TermsRoute: typeof TermsRoute
 }
 
@@ -270,13 +397,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/network-installation': {
-      id: '/network-installation'
-      path: '/network-installation'
-      fullPath: '/network-installation'
-      preLoaderRoute: typeof NetworkInstallationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -312,8 +432,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/$service': {
+      id: '/solutions/$service'
+      path: '/$service'
+      fullPath: '/solutions/$service'
+      preLoaderRoute: typeof SolutionsServiceRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/cctv-system-installation': {
+      id: '/solutions/cctv-system-installation'
+      path: '/cctv-system-installation'
+      fullPath: '/solutions/cctv-system-installation'
+      preLoaderRoute: typeof SolutionsCctvSystemInstallationRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/cloud-solutions': {
+      id: '/solutions/cloud-solutions'
+      path: '/cloud-solutions'
+      fullPath: '/solutions/cloud-solutions'
+      preLoaderRoute: typeof SolutionsCloudSolutionsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/cybersecurity-services': {
+      id: '/solutions/cybersecurity-services'
+      path: '/cybersecurity-services'
+      fullPath: '/solutions/cybersecurity-services'
+      preLoaderRoute: typeof SolutionsCybersecurityServicesRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/digital-skills-training': {
+      id: '/solutions/digital-skills-training'
+      path: '/digital-skills-training'
+      fullPath: '/solutions/digital-skills-training'
+      preLoaderRoute: typeof SolutionsDigitalSkillsTrainingRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/ict-consultancy': {
+      id: '/solutions/ict-consultancy'
+      path: '/ict-consultancy'
+      fullPath: '/solutions/ict-consultancy'
+      preLoaderRoute: typeof SolutionsIctConsultancyRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/ict-hardware-supply': {
+      id: '/solutions/ict-hardware-supply'
+      path: '/ict-hardware-supply'
+      fullPath: '/solutions/ict-hardware-supply'
+      preLoaderRoute: typeof SolutionsIctHardwareSupplyRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/managed-it-support': {
+      id: '/solutions/managed-it-support'
+      path: '/managed-it-support'
+      fullPath: '/solutions/managed-it-support'
+      preLoaderRoute: typeof SolutionsManagedItSupportRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/network-infrastructure-installation': {
+      id: '/solutions/network-infrastructure-installation'
+      path: '/network-infrastructure-installation'
+      fullPath: '/solutions/network-infrastructure-installation'
+      preLoaderRoute: typeof SolutionsNetworkInfrastructureInstallationRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/software-development': {
+      id: '/solutions/software-development'
+      path: '/software-development'
+      fullPath: '/solutions/software-development'
+      preLoaderRoute: typeof SolutionsSoftwareDevelopmentRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/website-development': {
+      id: '/solutions/website-development'
+      path: '/website-development'
+      fullPath: '/solutions/website-development'
+      preLoaderRoute: typeof SolutionsWebsiteDevelopmentRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
   }
 }
+
+interface SolutionsRouteChildren {
+  SolutionsServiceRoute: typeof SolutionsServiceRoute
+  SolutionsCctvSystemInstallationRoute: typeof SolutionsCctvSystemInstallationRoute
+  SolutionsCloudSolutionsRoute: typeof SolutionsCloudSolutionsRoute
+  SolutionsCybersecurityServicesRoute: typeof SolutionsCybersecurityServicesRoute
+  SolutionsDigitalSkillsTrainingRoute: typeof SolutionsDigitalSkillsTrainingRoute
+  SolutionsIctConsultancyRoute: typeof SolutionsIctConsultancyRoute
+  SolutionsIctHardwareSupplyRoute: typeof SolutionsIctHardwareSupplyRoute
+  SolutionsManagedItSupportRoute: typeof SolutionsManagedItSupportRoute
+  SolutionsNetworkInfrastructureInstallationRoute: typeof SolutionsNetworkInfrastructureInstallationRoute
+  SolutionsSoftwareDevelopmentRoute: typeof SolutionsSoftwareDevelopmentRoute
+  SolutionsWebsiteDevelopmentRoute: typeof SolutionsWebsiteDevelopmentRoute
+}
+
+const SolutionsRouteChildren: SolutionsRouteChildren = {
+  SolutionsServiceRoute: SolutionsServiceRoute,
+  SolutionsCctvSystemInstallationRoute: SolutionsCctvSystemInstallationRoute,
+  SolutionsCloudSolutionsRoute: SolutionsCloudSolutionsRoute,
+  SolutionsCybersecurityServicesRoute: SolutionsCybersecurityServicesRoute,
+  SolutionsDigitalSkillsTrainingRoute: SolutionsDigitalSkillsTrainingRoute,
+  SolutionsIctConsultancyRoute: SolutionsIctConsultancyRoute,
+  SolutionsIctHardwareSupplyRoute: SolutionsIctHardwareSupplyRoute,
+  SolutionsManagedItSupportRoute: SolutionsManagedItSupportRoute,
+  SolutionsNetworkInfrastructureInstallationRoute:
+    SolutionsNetworkInfrastructureInstallationRoute,
+  SolutionsSoftwareDevelopmentRoute: SolutionsSoftwareDevelopmentRoute,
+  SolutionsWebsiteDevelopmentRoute: SolutionsWebsiteDevelopmentRoute,
+}
+
+const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
+  SolutionsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -324,11 +554,10 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DataProtectionRoute: DataProtectionRoute,
   FaqRoute: FaqRoute,
-  NetworkInstallationRoute: NetworkInstallationRoute,
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
   ProjectsRoute: ProjectsRoute,
-  SolutionsRoute: SolutionsRoute,
+  SolutionsRoute: SolutionsRouteWithChildren,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport

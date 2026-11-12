@@ -1,13 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 import { useAuth } from "@/lib/auth-context";
+import { SERVICES } from "@/lib/services";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const NAV = [
-  { to: "/network-installation", label: "Network Installation" },
   { to: "/solutions", label: "Solutions" },
   { to: "/projects", label: "Projects" },
   { to: "/process", label: "Process" },
@@ -29,7 +30,22 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
-          {NAV.map((n) => (
+          <DropdownMenu>
+            <DropdownMenuTrigger className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[state=open]:text-foreground">
+              Solutions <ChevronDown className="size-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="max-h-[75vh] w-72">
+              <DropdownMenuItem asChild>
+                <Link to="/solutions" className="font-semibold">All solutions</Link>
+              </DropdownMenuItem>
+              {SERVICES.map((service) => (
+                <DropdownMenuItem key={service.slug} asChild>
+                  <Link to={service.to}>{service.title}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          {NAV.filter((n) => n.to !== "/solutions").map((n) => (
             <Link key={n.to} to={n.to} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" activeProps={{ className: "text-foreground" }}>
               {n.label}
             </Link>
@@ -47,7 +63,20 @@ export function Header() {
       </div>
       {open && (
         <nav aria-label="Mobile" className="border-t border-border bg-background px-5 pb-6 lg:hidden">
-          {NAV.map((n) => (
+          <details className="border-b border-border py-4">
+            <summary className="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+              <Link to="/solutions" onClick={() => setOpen(false)}>Solutions</Link>
+              <ChevronDown className="size-4" />
+            </summary>
+            <div className="mt-3 space-y-1 border-l border-border pl-4">
+              {SERVICES.map((service) => (
+                <Link key={service.slug} to={service.to} onClick={() => setOpen(false)} className="block py-2 text-sm text-muted-foreground hover:text-foreground">
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+          </details>
+          {NAV.filter((n) => n.to !== "/solutions").map((n) => (
             <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="block border-b border-border py-4 text-base font-medium">
               {n.label}
             </Link>

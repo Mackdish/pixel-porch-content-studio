@@ -1,52 +1,74 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Camera, HardDrive, Lightbulb, Network, ShieldCheck, Wrench } from "lucide-react";
-import { PageHero, Section } from "@/components/site/Section";
+import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/Blocks";
 import { Reveal } from "@/components/site/Reveal";
 import { pageHead } from "@/lib/seo";
+import { SERVICES } from "@/lib/services";
 
 export const Route = createFileRoute("/solutions")({
-  head: () => pageHead("ICT Solutions in Kenya", "Network installation, ICT hardware supply, CCTV, cybersecurity, managed IT support and ICT consultancy from Clisanco Technologies, Kisumu."),
+  head: () => pageHead(
+    "Technology Services & ICT Solutions in Kenya",
+    "ICT consultancy, custom software and website development, network infrastructure, hardware supply, cloud solutions, cybersecurity, managed IT support, CCTV installation and digital skills training from Clisanco Technologies."
+  ),
   component: Page,
 });
 
-const OTHER = [
-  { icon: HardDrive, title: "ICT Hardware Supply", text: "Switches, routers, firewalls, access points, racks, UPS and end-user devices from trusted vendors." },
-  { icon: Camera, title: "CCTV Installation", text: "IP camera systems on your network, with recording, remote viewing and clean cabling." },
-  { icon: ShieldCheck, title: "Cybersecurity", text: "Firewalls, access control, network segmentation and practical security reviews." },
-  { icon: Wrench, title: "Managed IT Support", text: "SLA-backed maintenance, monitoring and on-call support for your network." },
-  { icon: Lightbulb, title: "ICT Consultancy", text: "Independent advice on network strategy, upgrades and technology budgets." },
-];
-
 function Page() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  // TanStack file-based routing nests /solutions/* routes beneath this route.
+  // Render the catalogue only at /solutions and let child service routes render on their own URLs.
+  if (pathname !== "/solutions") return <Outlet />;
+
   return (
     <>
-      <PageHero eyebrow="Solutions" title="One partner for your whole network." intro="Network installation is our core. Everything else is built around keeping it fast, safe and supported." />
+      <PageHero
+        eyebrow="Our services"
+        title="Technology solutions that move your organisation forward."
+        intro="Explore our full range of technology services, including network infrastructure, custom software and websites, ICT consultancy, hardware supply, cloud, cybersecurity, CCTV, managed support and digital skills training."
+      >
+        <Button asChild size="lg"><Link to="/contact">Discuss Your Project</Link></Button>
+        <Button asChild size="lg" variant="outline"><Link to="/projects">View Our Projects</Link></Button>
+      </PageHero>
       <Section>
-        <Reveal>
-          <Link to="/network-installation" className="card-lift group grid gap-6 rounded-3xl bg-ink p-10 text-ink-foreground md:grid-cols-[1fr_auto] md:items-end md:p-14">
-            <div>
-              <Network className="size-10 text-brand" />
-              <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-brand">Featured</p>
-              <h2 className="mt-2 text-3xl font-bold md:text-5xl">Network Installation</h2>
-              <p className="mt-4 max-w-2xl text-lg text-ink-foreground/70">Structured cabling, fibre, switching, Wi-Fi, racks and firewalls, tested, certified and documented.</p>
-            </div>
-            <span className="inline-flex items-center gap-2 font-semibold text-brand">Explore <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
-          </Link>
-        </Reveal>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {OTHER.map((s, i) => (
-            <Reveal key={s.title} delay={i * 60}>
-              <div className="card-lift h-full rounded-3xl border border-border bg-card p-8">
-                <s.icon className="size-8 text-brand" />
-                <h3 className="mt-6 text-xl font-bold">{s.title}</h3>
-                <p className="mt-2 text-muted-foreground">{s.text}</p>
-              </div>
-            </Reveal>
-          ))}
+        <div className="mt-4">
+          <SectionHeading
+            eyebrow="More ways we can help"
+            title="One technology partner. Multiple capabilities."
+            intro="Choose a service or combine several into one coordinated solution tailored to your organisation."
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((service, i) => (
+              <Reveal key={service.title} delay={i * 50}>
+                <article className="card-lift flex h-full flex-col rounded-3xl border border-border bg-card p-7 md:p-8">
+                  <service.icon className="size-8 text-brand" />
+                  <h3 className="mt-5 text-xl font-bold">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.summary}</p>
+                  <ul className="mt-5 space-y-2">
+                    {service.points.slice(0, 4).map((point) => (
+                      <li key={point} className="flex gap-2 text-sm text-foreground/80">
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-7">
+                    <Button asChild variant="outline" className="w-full">
+                      <Link to={service.to}>View service details<ArrowRight className="ml-2 size-4" /></Link>
+                    </Button>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
-      <CtaBand />
+      <CtaBand
+        title="Not sure which service you need?"
+        text="Book a free consultation. Tell us what you want to achieve and we'll recommend a practical approach and provide a clear proposal."
+      />
     </>
   );
 }

@@ -34,8 +34,14 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
 export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server(
   async ({ next }) => {
     
-    const SUPABASE_URL = process.env['SUPABASE_URL'];
-    const SUPABASE_PUBLISHABLE_KEY = process.env['SUPABASE_PUBLISHABLE_KEY'];
+    // VITE_* values are embedded into the deployed bundle at build time.
+    // Cloudflare Workers may not expose Node's process.env unless nodejs_compat
+    // and matching runtime bindings are configured, while the browser client
+    // already uses these same public build-time values.
+    const runtimeEnv = typeof process !== 'undefined' ? process.env : undefined;
+    const SUPABASE_URL = import.meta.env['VITE_SUPABASE_URL'] || runtimeEnv?.['SUPABASE_URL'];
+    const SUPABASE_PUBLISHABLE_KEY =
+      import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] || runtimeEnv?.['SUPABASE_PUBLISHABLE_KEY'];
 
     if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
       const missing = [
@@ -54,17 +60,18 @@ export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server
     }
 
 
+    // Some hosting/proxy configurations normalize or omit Authorization on
+    // server-function requests. The client middleware sends the same session
+    // token in this dedicated header as a fallback.
     const authHeader = request.headers.get('authorization');
+    const fallbackToken = request.headers.get('x-supabase-access-token');
+    const token = authHeader?.startsWith('Bearer ')
+      ? authHeader.slice('Bearer '.length).trim()
+      : fallbackToken?.trim();
 
-    if (!authHeader) {
-      throw new Error('Unauthorized: No authorization header provided');
+    if (!token) {
+      throw new Error('Unauthorized: No session token provided');
     }
-
-    if (!authHeader.startsWith('Bearer ')) {
-      throw new Error('Unauthorized: Only Bearer tokens are supported');
-    }
-
-    const token = authHeader.replace('Bearer ', '');
     if (!token) {
       throw new Error('Unauthorized: No token provided');
     }
