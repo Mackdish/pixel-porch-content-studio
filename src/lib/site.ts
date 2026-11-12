@@ -80,10 +80,10 @@ export const FAQS = [
 ];
 
 export const PROJECTS = [
-  { title: "Networking Installations", tag: "Lead project", text: "Structured cabling, switching and Wi-Fi rollout for a multi-floor client site.", img: "rack" },
-  { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls.", img: "wifi" },
-  { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office.", img: "engineer" },
-  { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility.", img: "design" },
+  { title: "Networking Installations", tag: "Lead project", text: "Structured cabling, switching and Wi-Fi rollout for a multi-floor client site.", img: "exterior" },
+  { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls." },
+  { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office." },
+  { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility." },
   { title: "EduTech", tag: "Education Technology", text: "An education technology website presenting digital learning services and resources for its target audience.", img: "https://image.thum.io/get/width/1200/crop/800/https://edutech.top/", url: "https://edutech.top" },
   { title: "Jatitosa Properties", tag: "Real Estate", text: "A real estate website designed to introduce the property brand and give prospective clients a clear route to explore properties and make enquiries.", img: "https://image.thum.io/get/width/1200/crop/800/https://jatitosaproperties.co.ke/", url: "https://jatitosaproperties.co.ke" },
   { title: "Intech Computer Shop", tag: "E-commerce", text: "An online electronics store with product categories, promotional offers, shopping features and customer support information.", img: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/676723e5-f5a6-4367-9987-feab6f279315/id-preview-75ac8dfd--ecb0be3e-3b32-4a9e-9e36-33ee2a225f65.lovable.app-1777489747793.png", url: "https://intechcomputershop.co.ke" },

@@ -4,16 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { CtaBand, FaqList, ProcessTimeline, TextLink } from "@/components/site/Blocks";
-import { ProjectCard, PostCard } from "@/components/site/Cards";
+import { ProjectGrid, PostCard } from "@/components/site/Cards";
 import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
 import { getPublishedProjects, getPublishedPage } from "@/lib/content.functions";
 import { parseContent } from "@/lib/content-types";
 import { useQuery } from "@tanstack/react-query";
 import { pageHead } from "@/lib/seo";
-import heroImg from "@/assets/hero-rack.jpeg";
-import designImg from "@/assets/network-design.jpg";
-import cablingImg from "@/assets/Cabling-engineer.jpeg";
-import wifiImg from "@/assets/wifi-office.jpg";
+import { PHOTOS } from "@/lib/gallery";
 
 export const Route = createFileRoute("/")({
   loader: () => getPublishedProjects(),
@@ -40,11 +37,13 @@ const SEGMENTS = [
   { title: "NGOs, Public & Community Organisations", text: "Make technology easier to manage through fit-for-purpose ICT advice, connected infrastructure, secure information systems and staff training." },
 ];
 
-const FEATURES = [
-  { title: "Technology planned around your goals", text: "The right solution starts with understanding your organisation. We assess your needs, existing systems, users and budget before recommending an approach, whether you need a new platform, upgraded infrastructure or ongoing support.", img: designImg, cta: "See how we work", to: "/process" as const },
-  { title: "Digital platforms that make work easier", text: "We develop custom software and responsive websites that help organisations serve customers, manage information and simplify everyday processes. From business websites to tailored management systems, we focus on usability and practical value.", img: heroImg, cta: "Explore software and web services", to: "/solutions" as const },
-  { title: "Infrastructure you can depend on", text: "From structured cabling and Wi-Fi to cloud environments and ICT hardware, we help create a reliable technology foundation. Our work is planned for the way your people communicate, collaborate and access information.", img: cablingImg, cta: "Explore infrastructure solutions", to: "/solutions" as const },
-  { title: "Protection, support and skills for the long term", text: "Technology needs attention after implementation. We help organisations strengthen security, maintain systems, monitor premises with CCTV and build staff confidence through practical digital skills training.", img: wifiImg, cta: "Talk to our team", to: "/contact" as const },
+type Feature = { title: string; text: string; img: string; alt: string; pos?: string; cta: string; to: "/process" | "/solutions" | "/contact" };
+
+const FEATURES: Feature[] = [
+  { title: "Technology planned around your goals", text: "The right solution starts with understanding your organisation. We assess your needs, existing systems, users and budget before recommending an approach, whether you need a new platform, upgraded infrastructure or ongoing support.", img: PHOTOS.teamBriefing.src, alt: PHOTOS.teamBriefing.alt, pos: "object-[50%_38%]", cta: "See how we work", to: "/process" },
+  { title: "Digital platforms that make work easier", text: "We develop custom software and responsive websites that help organisations serve customers, manage information and simplify everyday processes. From business websites to tailored management systems, we focus on usability and practical value.", img: PHOTOS.socketInstall.src, alt: PHOTOS.socketInstall.alt, pos: "object-[50%_58%]", cta: "Explore software and web services", to: "/solutions" },
+  { title: "Infrastructure you can depend on", text: "From structured cabling and Wi-Fi to cloud environments and ICT hardware, we help create a reliable technology foundation. Our work is planned for the way your people communicate, collaborate and access information.", img: PHOTOS.cablingDesk.src, alt: PHOTOS.cablingDesk.alt, cta: "Explore infrastructure solutions", to: "/solutions" },
+  { title: "Protection, support and skills for the long term", text: "Technology needs attention after implementation. We help organisations strengthen security, maintain systems, monitor premises with CCTV and build staff confidence through practical digital skills training.", img: PHOTOS.ladderRack.src, alt: PHOTOS.ladderRack.alt, pos: "object-[50%_22%]", cta: "Talk to our team", to: "/contact" },
 ];
 
 const HOME_FAQS = [
@@ -78,7 +77,7 @@ function Home() {
           </div>
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-brand-soft" aria-hidden="true" />
-            <img src={heroImg} alt="Network rack with neatly labelled blue Cat6 patch cables and switches" width={1280} height={1024} fetchPriority="high" className="aspect-[5/4] w-full rounded-3xl object-cover shadow-lift" />
+            <img src={PHOTOS.teamDrill.src} alt={PHOTOS.teamDrill.alt} width={1280} height={1024} fetchPriority="high" className="aspect-[5/4] w-full rounded-3xl object-cover shadow-lift" />
           </div>
         </div>
       </section>
@@ -125,7 +124,7 @@ function Home() {
             <Reveal key={f.title}>
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
                 <div className={i % 2 ? "lg:order-2" : ""}>
-                  <img src={f.img} alt={f.title} loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover shadow-soft" />
+                  <img src={f.img} alt={f.alt} loading="lazy" width={1200} height={960} className={`aspect-[5/4] w-full rounded-3xl object-cover shadow-soft ${f.pos ?? ""}`} />
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold leading-tight md:text-5xl">{f.title}</h2>
@@ -163,9 +162,7 @@ function Home() {
           <SectionHeading eyebrow="Our work" title="Practical solutions. Real-world needs." />
           <div className="mb-12 md:mb-16"><TextLink to="/projects">All projects</TextLink></div>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((p, i) => <Reveal key={"id" in p ? p.id : p.title} delay={i * 60}><ProjectCard project={p} /></Reveal>)}
-        </div>
+<ProjectGrid projects={projects} />
       </Section>
 
       {/* Testimonials */}
