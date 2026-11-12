@@ -60,6 +60,7 @@ function Home() {
   const homeCopy = useQuery({ queryKey: ["public-page-copy", "home"], queryFn: () => getPublishedPage({ data: { slug: "home" } }), staleTime: 60_000 });
   const copy = homeCopy.data ? parseContent("page", homeCopy.data.content) : null;
   const projects = [...PROJECTS, ...managedProjects.filter((managed) => !PROJECTS.some((project) => project.title === managed.title))];
+  const homepageProjects = projects.filter((project) => !["EduTech", "Jatitosa Properties", "Intech Computer Shop", "TradeMall"].includes(project.title));
   return (
     <>
       {/* Hero */}
@@ -162,7 +163,7 @@ function Home() {
           <SectionHeading eyebrow="Our work" title="Practical solutions. Real-world needs." />
           <div className="mb-12 md:mb-16"><TextLink to="/projects">All projects</TextLink></div>
         </div>
-<ProjectGrid projects={projects} />
+<ProjectGrid projects={homepageProjects} />
       </Section>
 
       {/* Testimonials */}
