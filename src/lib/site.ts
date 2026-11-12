@@ -84,6 +84,10 @@ export const PROJECTS = [
   { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls.", img: "wifi" },
   { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office.", img: "engineer" },
   { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility.", img: "design" },
+  { title: "EduTech", tag: "Education Technology", text: "An education technology website presenting digital learning services and resources for its target audience.", img: "https://image.thum.io/get/width/1200/crop/800/https://edutech.top/", url: "https://edutech.top" },
+  { title: "Jatitosa Properties", tag: "Real Estate", text: "A real estate website designed to introduce the property brand and give prospective clients a clear route to explore properties and make enquiries.", img: "https://image.thum.io/get/width/1200/crop/800/https://jatitosaproperties.co.ke/", url: "https://jatitosaproperties.co.ke" },
+  { title: "Intech Computer Shop", tag: "E-commerce", text: "An online electronics store with product categories, promotional offers, shopping features and customer support information.", img: "https://image.thum.io/get/width/1200/crop/800/https://intechcomputershop.co.ke/", url: "https://intechcomputershop.co.ke" },
+  { title: "TradeMall", tag: "Advertising Technology", text: "An advertising marketplace connecting advertisers and publishers, with campaign targeting, ad formats and performance analytics for African audiences.", img: "https://image.thum.io/get/width/1200/crop/800/https://trademall.co.ke/", url: "https://trademall.co.ke" },
 ] as const;
 
 // [Placeholder] Blog posts — replace with real articles.
