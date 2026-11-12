@@ -60,7 +60,7 @@ function Home() {
   const managedProjects = Route.useLoaderData();
   const homeCopy = useQuery({ queryKey: ["public-page-copy", "home"], queryFn: () => getPublishedPage({ data: { slug: "home" } }), staleTime: 60_000 });
   const copy = homeCopy.data ? parseContent("page", homeCopy.data.content) : null;
-  const projects = managedProjects.length > 0 ? managedProjects : PROJECTS;
+  const projects = [...PROJECTS, ...managedProjects.filter((managed) => !PROJECTS.some((project) => project.title === managed.title))];
   return (
     <>
       {/* Hero */}
