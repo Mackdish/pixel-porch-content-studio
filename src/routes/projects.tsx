@@ -14,8 +14,8 @@ export const Route = createFileRoute("/projects")({
     <>
       <PageHero eyebrow="Projects" title="Networks we've built." intro="A selection of recent installations for schools, businesses and organisations." />
       <Section>
-        <div className="grid gap-6 md:grid-cols-2">
-          {PROJECTS.map((p, i) => <Reveal key={p.title} delay={i * 60}><ProjectCard project={p} /></Reveal>)}
+        <div className="grid gap-6 md:grid-cols-3">
+          {PROJECTS.map((p, i) => <div key={p.title} className={"img" in p ? "md:col-span-3" : ""}><Reveal delay={i * 60}><ProjectCard project={p} /></Reveal></div>)}
         </div>
       </Section>
       <Section tone="surface">

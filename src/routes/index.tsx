@@ -9,9 +9,6 @@ import { ProjectCard, PostCard } from "@/components/site/Cards";
 import { PROJECTS, POSTS, STATS, TESTIMONIALS } from "@/lib/site";
 import { pageHead } from "@/lib/seo";
 import { PHOTOS } from "@/lib/gallery";
-import rackImg from "@/assets/hero-rack.jpg";
-import designImg from "@/assets/network-design.jpg";
-import wifiImg from "@/assets/wifi-office.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => pageHead("LAN & Network Installation in Kisumu, Kenya", "Structured cabling, LAN, Wi-Fi and server-room installation for offices, schools, hospitals and enterprises across Kenya, by certified engineers in Kisumu."),
@@ -32,11 +29,13 @@ const SEGMENTS = [
   { title: "Hospitals, NGOs & Government", text: "Secure, segmented and fully documented networks for critical work." },
 ];
 
-const FEATURES = [
-  { title: "Designed before it's installed", text: "Every project starts with a site survey and a network design. You get a clear bill of quantities so you know exactly what's going in and why.", img: designImg, cta: "See our process", to: "/process" as const },
-  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: PHOTOS.cablingDesk.src, alt: PHOTOS.cablingDesk.alt, cta: "Explore network installation", to: "/network-installation" as const },
-  { title: "Fast, reliable Wi-Fi in every corner", text: "We plan coverage, place access points where they actually perform, and separate guest and staff networks for speed and safety.", img: wifiImg, cta: "Talk to an engineer", to: "/contact" as const },
-  { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: rackImg, cta: "View all solutions", to: "/solutions" as const },
+type Feature = { title: string; text: string; img: string; alt: string; pos?: string; cta: string; to: "/process" | "/network-installation" | "/contact" | "/solutions" };
+
+const FEATURES: Feature[] = [
+  { title: "Designed before it's installed", text: "Every project starts with a site survey and a network design. You get a clear bill of quantities so you know exactly what's going in and why.", img: PHOTOS.exterior.src, alt: PHOTOS.exterior.alt, cta: "See our process", to: "/process" },
+  { title: "Clean, labelled, certified cabling", text: "Every run is tested and certified, neatly managed and fully labelled. At handover you receive as-built documentation, so nothing is a mystery later.", img: PHOTOS.cablingDesk.src, alt: PHOTOS.cablingDesk.alt, cta: "Explore network installation", to: "/network-installation" },
+  { title: "Fast, reliable Wi-Fi in every corner", text: "We plan coverage, place access points where they actually perform, and separate guest and staff networks for speed and safety.", img: PHOTOS.socketInstall.src, alt: PHOTOS.socketInstall.alt, pos: "object-[50%_58%]", cta: "Talk to an engineer", to: "/contact" },
+  { title: "Secure by default", text: "VLANs, firewall configuration and access control come built in, with the option to add CCTV and cybersecurity services on the same network.", img: PHOTOS.rackCabinet.src, alt: PHOTOS.rackCabinet.alt, cta: "View all solutions", to: "/solutions" },
 ];
 
 function Home() {
@@ -113,7 +112,7 @@ function Home() {
             <Reveal key={f.title}>
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
                 <div className={i % 2 ? "lg:order-2" : ""}>
-                  <img src={f.img} alt={"alt" in f ? f.alt : f.title} loading="lazy" width={1200} height={960} className="aspect-[5/4] w-full rounded-3xl object-cover shadow-soft" />
+                  <img src={f.img} alt={f.alt} loading="lazy" width={1200} height={960} className={`aspect-[5/4] w-full rounded-3xl object-cover shadow-soft ${f.pos ?? ""}`} />
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold leading-tight md:text-5xl">{f.title}</h2>
@@ -151,8 +150,8 @@ function Home() {
           <SectionHeading eyebrow="Recent projects" title="Work we're proud of." />
           <div className="mb-12 md:mb-16"><TextLink to="/projects">All projects</TextLink></div>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          {PROJECTS.map((p, i) => <Reveal key={p.title} delay={i * 60}><ProjectCard project={p} /></Reveal>)}
+        <div className="grid gap-6 md:grid-cols-3">
+          {PROJECTS.map((p, i) => <div key={p.title} className={"img" in p ? "md:col-span-3" : ""}><Reveal delay={i * 60}><ProjectCard project={p} /></Reveal></div>)}
         </div>
       </Section>
 

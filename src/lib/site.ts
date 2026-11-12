@@ -81,9 +81,9 @@ export const FAQS = [
 
 export const PROJECTS = [
   { title: "Networking Installations", tag: "Lead project", text: "Structured cabling, switching and Wi-Fi rollout for a multi-floor client site.", img: "exterior" },
-  { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls.", img: "wifi" },
-  { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office.", img: "engineer" },
-  { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility.", img: "design" },
+  { title: "School campus Wi-Fi", tag: "Education", text: "High-density wireless coverage across classrooms and halls." },
+  { title: "Office server room", tag: "Business", text: "Rack build, cable management and UPS for a growing office." },
+  { title: "Clinic network upgrade", tag: "Healthcare", text: "Secure, segmented network for a healthcare facility." },
 ] as const;
 
 // [Placeholder] Blog posts — replace with real articles.
